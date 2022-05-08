@@ -1,0 +1,82 @@
+#: set height window.height
+#: set width window.width
+#: set rad width/2.4
+
+#: set primary_color_hex colors[app.theme_cls.primary_palette][app.theme_cls.primary_hue]
+
+<LoginScreen>:
+	md_bg_color: app.bg_color
+    on_enter:
+        app.animate_signup('')
+    canvas:
+		Color:
+			rgba:app.theme_cls.primary_color[:-1]+[.9]
+		Ellipse:
+			size:rad,rad
+			pos:0-rad/2,height-rad+20
+			angle_start:0
+			angle_end:180
+		Color:
+			rgba:app.login_circle_light[:-1]+[.7]
+		Ellipse:
+			pos:0,height-rad/2
+			size:rad,rad
+			angle_start:90
+			angle_end:270
+
+	MDBoxLayout:
+		adaptive_height:True
+		id: box
+		pos_hint:{"top":.95}
+		orientation:'vertical'
+		spacing:'70dp'
+		MDLabel:
+			adaptive_height:True
+			text:f"LOGIN\nTO [color={primary_color_hex}][u]PASS••[/u]"
+			markup:True
+            valign:"center"
+			theme_text_color:"Custom"
+			text_color:app.text_color
+			font_name:'Poppins'
+			halign:'center'
+			font_size:'44dp'
+			pos_hint:{'top':1}
+		MDBoxLayout:
+			adaptive_height:True
+			spacing:'50dp'
+			orientation:'vertical'
+			padding:(0,dp(15),0,0)
+			MDBoxLayout:
+				adaptive_height:True
+				orientation:'vertical'
+				spacing:'35dp'
+				PasswordCard:
+					id: password
+					label_name:'Password'
+					hint_text:"Enter Password"
+					pos_hint:{'center_x':.5}
+                    on_text_validate:
+                        root.login_button_pressed(password.text)
+				FloatingButton:
+					id: lock
+					elevation:10
+					icon:'login'
+					user_font_size:80
+					user_font_size:80
+					md_bg_color:app.light_color if not app.dark_mode else app.dark_color
+					theme_text_color:'Custom'
+					text_color:app.theme_cls.primary_color
+					on_press:
+						root.login_button_pressed(password.text)
+					pos_hint:{'center_x':.5}
+
+	# MDTextButton:
+	# 	id:forgot
+	# 	x: password.x+dp(25)
+	# 	y: password.y-dp(25)
+	# 	text:'Forgot Password?'
+	# 	font_name:'RobotoMedium'
+	# 	theme_text_color:"Secondary"
+	# 	font_size:"12sp"
+
+	
