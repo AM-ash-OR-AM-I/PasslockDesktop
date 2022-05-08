@@ -1,10 +1,14 @@
-#:import get_color_from_hex kivy.utils.get_color_from_hex
-#:import Gradient kivy_gradient.Gradient
-#:import Toolbar libs.modules.Toolbar.Toolbar
-#:import List libs.modules.List.List
-#:import sm kivy.uix.screenmanager
-#:import Clipboard kivy.core.clipboard.Clipboard
-#:import toast kivymd.toast.toast
+#: set icon_size 60
+#: import platform kivy.platform
+#: import Clock kivy.clock.Clock
+#: import colors kivymd.color_definitions.colors
+#: import window kivy.core.window.Window
+#: import get_color_from_hex kivy.utils.get_color_from_hex
+#: import Toolbar libs.modules.Toolbar.Toolbar
+#: import List libs.modules.List.List
+#: import sm kivy.uix.screenmanager
+#: import Clipboard kivy.core.clipboard.Clipboard
+#: import toast kivymd.toast.toast
 
 <MyLabel@MDLabel>
 	theme_text_color:"Custom"
@@ -80,7 +84,7 @@
 			orientation:'horizontal'
 			size_hint_y: None
 			height:"40dp"
-			padding:dp(40),0,dp(30),0
+			padding:dp(80),0,dp(80),0
 			MDLabel:
 				text: str(int(slider.value))
 				size_hint_x: None
@@ -176,7 +180,7 @@
 				id: searchbar
 				height:'50dp'
 				set_elevation:10
-				size_hint_x:.85
+				size_hint_x:.9
 				pos_hint:{'center_x':.5}
 				radius: '15dp'
 				on_text:
@@ -220,7 +224,7 @@
 			halign:'left'
 	MDTabs:
 		id:tab
-#		default_tab:1
+#		default_tab:1\
 		indicator_color:app.theme_cls.primary_color
 		anim_duration:.2
 		background_color:app.primary_accent
@@ -230,7 +234,7 @@
 		set_elevation:5
 		show_anim:True
 		text_color_active:app.theme_cls.primary_color
-		text_color_normal:[.75,.75,.75,1]
+		text_color_normal:[.7,.7,.7,1]
 		Manual:
 			id: manual
 			text: "[b]MANUAL"

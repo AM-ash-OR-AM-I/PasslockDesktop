@@ -1,16 +1,11 @@
-import math
 import threading
-from time import time
 from colorsys import rgb_to_hls, hls_to_rgb
 import os.path
-from libs.screens.classes import Dialog
 from libs.screens.root import Root
 from libs.firebase import Firebase
 from libs.utils import *
 
-from kivy.config import Config
 from kivy.core.clipboard import Clipboard
-from kivy import platform
 from kivy.animation import Animation
 from kivy.core.window import Window
 from kivy.properties import (
@@ -23,32 +18,9 @@ from kivy.clock import Clock
 
 from kivymd.toast import toast
 from kivymd.app import MDApp
-from kivymd.material_resources import dp
-from kivymd.uix.button import MDFlatButton, MDFillRoundFlatButton
 
-
-def emulate_android_device(
-    pixels_horizontal=1080,
-    pixels_vertical=2240,
-    android_dpi=None,
-    monitor_dpi=157,
-    display_size_mobile=6.5,
-):
-    if android_dpi is None:
-        android_dpi = int(
-            math.sqrt(pixels_horizontal**2 + pixels_vertical**2)
-            / display_size_mobile
-        )
-
-    scale_factor = monitor_dpi / android_dpi
-    Window.size = (scale_factor * pixels_horizontal, scale_factor * pixels_vertical)
-
-
-if platform != "android":
-    emulate_android_device()
-else:
-    from libs.modules.AndroidAPI import statusbar, android_dark_mode
-
+Window.size = (1200, 800)
+# Window.maximize()
 
 font_file = "kivymd/fonts/Poppins-Regular.ttf"
 
@@ -89,7 +61,6 @@ class MainApp(MDApp):
             "dark_mode",
             "system_dark_mode",
             "backup_failure",
-            "extra_security",
             "primary_palette",
         )
         self.theme_cls.font_styles.update(
@@ -100,12 +71,14 @@ class MainApp(MDApp):
                 "H4": [font_file, 34, False, 0.25],
                 "H5": [font_file, 24, False, 0],
                 "H6": [font_file, 20, False, 0.15],
+                "Button": [font_file, 14, True, 1.25],
+                "Body1": [font_file, 16, False, 0.5],
+                "Body2": [font_file, 14, False, 0.25],
             }
         )
         self.primary_palette = get_primary_palette()
         self.signup = False if os.path.exists("data/user_id.txt") else True
         self.auto_sync = check_auto_sync()
-        self.extra_security = is_extra_security()
         Window.on_minimize = lambda: self.backup_on_pause()
         self.firebase = Firebase()
         threading.Thread(target=self.set_dark_mode, daemon=True).start()
@@ -191,13 +164,7 @@ class MainApp(MDApp):
             self.firebase.restore()
 
     def set_dark_mode(self):
-        self.system_dark_mode = is_dark_mode(system=True)
-        if platform == "android":
-            self.dark_mode = (
-                android_dark_mode() if self.system_dark_mode else is_dark_mode()
-            )
-        else:
-            self.dark_mode = is_dark_mode()
+        self.dark_mode = is_dark_mode()
         Clock.schedule_once(
             lambda x: exec("self.entered_app = True", {"self": self}), 1
         )
@@ -263,23 +230,6 @@ class MainApp(MDApp):
         self.root.transition.direction = "right"
         self.root.current = self.screen_history[-1]
 
-    def open_exit_dialog(self):
-        if not self.exit_dialog:
-            self.exit_dialog = Dialog(
-                title="Exit",
-                text="Do you want to exit?",
-                buttons=[
-                    MDFillRoundFlatButton(
-                        text="YES", on_release=lambda x: self.stop(), _radius=dp(20)
-                    ),
-                    MDFlatButton(
-                        text="NO",
-                        on_release=lambda x: self.exit_dialog.dismiss(),
-                    ),
-                ],
-            )
-        self.exit_dialog.open()
-
     def on_dark_mode(self, instance, mode):
         if self.entered_app:
             current_screen = self.root.current
@@ -318,70 +268,27 @@ class MainApp(MDApp):
         if self.dark_mode:
             self.theme_cls.theme_style = "Dark"
             self.theme_cls.primary_hue = "300"
-            if platform == "android":
-                statusbar(
-                    status_color=self.dark_hex,
-                    nav_color=self.bg_color_dark_hex,
-                    white_text=False,
-                )
         else:
             self.theme_cls.theme_style = "Light"
             self.theme_cls.primary_hue = "500"
-            if platform == "android":
-                statusbar(
-                    status_color=self.light_hex,
-                    nav_color=self.bg_color_light_hex,
-                    white_text=True,
-                )
 
     def toggle_mode(self, *args):
         self.dark_mode = not self.dark_mode
-
-    def on_start(self):
-        """Sets status bar color in android."""
-        if platform == "android":
-            statusbar(
-                status_color=self.dark_hex if self.dark_mode else self.light_hex,
-                nav_color=self.bg_color_dark_hex
-                if self.dark_mode
-                else self.bg_color_light_hex,
-                white_text=not self.dark_mode,
-            )
 
     def backup_on_pause(self):
         def success():
             toast("Backed up!")
             self.backup_failure = False
-            
+
         def failure(*args):
             toast("Some Error occured couldn't backup!")
             self.backup_failure = True
-            
+
         if self.auto_sync and self.password_changed:
             self.firebase.backup()
             self.firebase.backup_success = lambda *args: success()
             self.firebase.backup_failure = lambda *args: failure(*args)
             self.password_changed = False
-
-    def on_pause(self):
-        """Saves data on pause."""
-        self.pause_start = time()
-        self.save_config.save_settings()
-        self.backup_on_pause()
-        return True
-
-    def on_resume(self):
-        """Asks user to login after pausing app for specific time period"""
-        if (
-            self.extra_security
-            and not self.signup
-            and (time() - self.pause_start) > 300
-        ):
-            self.root.load_screen("LoginScreen")
-            self.root.LoginScreen.ids.password.focus = True
-            self.root.LoginScreen.ids.password.text = ""
-
-        return True
 
     def on_stop(self):
         self.save_config.save_settings()

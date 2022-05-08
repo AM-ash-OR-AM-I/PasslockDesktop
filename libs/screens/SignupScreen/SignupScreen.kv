@@ -1,7 +1,11 @@
-#: set height window.height
+#: set icon_size 60
+#: import platform kivy.platform
+#: import Clock kivy.clock.Clock
+#: import colors kivymd.color_definitions.colors
+#: import window kivy.core.window.Window
 #: set width window.width
-#: set rad width/2
-#: set lbl_size '18sp'
+#: set rad width/3.4
+#: set lbl_size '15sp'
 
 #: set primary_color_hex colors[app.theme_cls.primary_palette][app.theme_cls.primary_hue]
 
@@ -12,13 +16,13 @@
 			rgba:app.theme_cls.primary_color[:-1]+[.9]
 		Ellipse:
 			size:rad,rad
-			pos:0-rad/2,height-rad+20
+			pos:0-rad/2,window.height-rad+20
 			angle_start:0
 			angle_end:180
 		Color:
 			rgba:app.login_circle_light[:-1]+[.7]
 		Ellipse:
-			pos:0,height-rad/2
+			pos:0,window.height-rad/2
 			size:rad,rad
 			angle_start:90
 			angle_end:270
@@ -27,18 +31,18 @@
 		adaptive_height:True
 		id: box
 		opacity:1
-		pos_hint:{"top":0.95}
+		pos_hint:{"top":0.97}
 		orientation:'vertical'
 		spacing:'50dp'
 		MDLabel:
 			adaptive_height:True
-			text:("SIGN UP\n" if root.show_signup else "LOGIN\n") + f"TO [color={primary_color_hex}][u]PASS••[/u]"
+			text:f"WELCOME\nTO [color={primary_color_hex}][u]PASS••[/u]"
 			markup:True
 			theme_text_color:"Custom"
 			text_color:app.text_color
 			font_name:'Poppins'
 			halign:'center'
-			font_size:'44dp'
+			font_size:'36dp'
 			pos_hint:{'top':1}
 		MDBoxLayout:
 			adaptive_height:True
@@ -48,7 +52,7 @@
 			BorderCard:
 				id: email
 				label_name:'Email Address'
-				hint_text:'username@mail.com' if root.show_signup else "Your mail name"
+				hint_text:"e.g. username@mail.com"
 				pos_hint:{'center_x':.5}
 				icon_left_action:['account']
 			MDBoxLayout:
@@ -58,43 +62,45 @@
 				PasswordCard:
 					id: password
 					label_name:'Password'
-					hint_text:('Create' if root.show_signup else "Enter")+" Password"
+					hint_text:"Enter Password"
 					pos_hint:{'center_x':.5}
-                    on_text_validate:
-                        root.button_pressed(email.text, password.text)
-				FloatingButton:
-					id: lock
-					elevation:10
-					icon:'login' if not root.show_signup else "lock"
-					user_font_size:80
-					user_font_size:80
-					md_bg_color:app.light_color if not app.dark_mode else app.dark_color
-					theme_text_color:'Custom'
-					text_color:app.theme_cls.primary_color
-					on_release:
-						root.button_pressed(email.text, password.text)
-					pos_hint:{'center_x':.5}
+    MDBoxLayout:
+        adaptive_height:True
+        FloatingButton:
+            id: signup
+            text:'Signup'
+            on_release:
+                root.button_pressed(email.text, password.text, signup=True)
+            pos_hint:{'center_x':.5}
+        FloatingButton:
+            id: login
+            text:'Login'
+            md_bg_color:app.primary_accent
+            on_release:
+                root.button_pressed(email.text, password.text, signup=False)
+            pos_hint:{'center_x':.5}
+                    
 
-	MDSeparator:
-		id: separator
-        opacity: 1
-		size_hint_x:.8
-		y:lock.y - dp(55)
-		pos_hint:{"center_x":.5}
+	# MDSeparator:
+	# 	id: separator
+    #     opacity: 1
+	# 	size_hint_x:.8
+	# 	y:lock.y - dp(55)
+	# 	pos_hint:{"center_x":.5}
 
-	MDTextButton:
-        id: switch_signin
-        opacity: 1
-		text:f'New user? [color={primary_color_hex}]Signup!'if not root.show_signup else f"Existing user? [color={primary_color_hex}]Login."
-		markup:True
-		top:separator.y - dp(20)
-		pos_hint:{'center_x':.5}
-		font_name:'RobotoMedium'
-		theme_text_color:"Custom"
-		text_color:app.text_color
-		halign:'center'
-		size_hint_x:1
-		on_release: root.show_signup = not root.show_signup
-		font_size:lbl_size
+	# MDTextButton:
+    #     id: switch_signin
+    #     opacity: 1
+	# 	text:f'New user? [color={primary_color_hex}]Signup!'if not root.show_signup else f"Existing user? [color={primary_color_hex}]Login."
+	# 	markup:True
+	# 	top:separator.y - dp(20)
+	# 	pos_hint:{'center_x':.5}
+	# 	font_name:'RobotoMedium'
+	# 	theme_text_color:"Custom"
+	# 	text_color:app.text_color
+	# 	halign:'center'
+	# 	size_hint_x:1
+	# 	on_release: root.show_signup = not root.show_signup
+	# 	font_size:lbl_size
 
 	

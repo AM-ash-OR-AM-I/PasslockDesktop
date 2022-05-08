@@ -90,14 +90,12 @@ class SignupScreen(MDScreen):
         self.firebase.login(email, password)
         app.root.load_screen("HomeScreen", set_current=False)
 
-    def button_pressed(self, email, password):
+    def button_pressed(self, email, password, signup):
         # TODO: Save user email and show in settings screen.
         def import_encryption():
             from libs.encryption import Encryption
 
             self.encryption = Encryption
-            if not self.show_signup:
-                self.login(email, password)
 
         self.email = email
         self.password = password
@@ -106,9 +104,11 @@ class SignupScreen(MDScreen):
         if self.loading_view is None:
             self.loading_view = Factory.LoadingScreen()
         self.loading_view.text = (
-            "Signing up..." if self.show_signup else "Logging in..."
+            "Signing up..." if signup else "Logging in..."
         )
         self.loading_view.open()
         self.loading_view.on_open = lambda *args: import_encryption()
-        if self.show_signup:
+        if signup:
             self.signup(email, password)
+        else:
+            self.login(email, password)

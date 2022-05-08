@@ -17,19 +17,18 @@ from kivymd.uix.button import (
 )
 from kivymd.uix.dialog import MDDialog
 
-# ---- SetVariables ----
-Builder.load_string("""
-#: set icon_size 60
-#: import platform kivy.platform
-#: import Clock kivy.clock.Clock
-#: import colors kivymd.color_definitions.colors
-#: import window kivy.core.window.Window
-""")
-
 # ---- FloatingButton ----
 Builder.load_string("""
-<FloatingButton@MDFloatingActionButton+FakeCircularElevationBehavior>
-	_no_ripple_effect: True
+<FloatingButton@MDRaisedButton>
+    text:"Login"
+    markup:True
+    font_name:"Poppins-Bold"
+    md_bg_color:app.light_color if not app.dark_mode else app.dark_color
+    theme_text_color:'Custom'
+    text_color:app.theme_cls.primary_color
+    font_size:sp(16)
+    size_hint_x:1
+    elevation:0
     """
 )
 
@@ -40,7 +39,9 @@ Builder.load_string("""
 <BorderCard@CardTextField>
 	inactive_color:app.theme_cls.primary_light[:-1]+[.4]
 	icon_font_size:icon_size
-	thickness:dp(1) if platform == 'android' else dp(1.4)
+    height:"50dp"
+    radius:"15dp"
+	thickness:dp(1)
 	icon_color:app.theme_cls.primary_light
 
 <PasswordCard@BorderCard>
@@ -112,7 +113,7 @@ class LoadingScreen(ModalView):
 <LoadingScreen>:
     auto_dismiss: False
     background_color: 0, 0, 0, 0
-    overlay_color: 0, 0, 0, 0.2
+    overlay_color: 0, 0, 0, 0.6
     text: "Checking..." 
     FloatLayout:
         MDLabel:
@@ -120,7 +121,7 @@ class LoadingScreen(ModalView):
             font_name:"Poppins"
             theme_text_color:"Custom"
             pos_hint:{"center_y":.5}
-            text_color: app.text_color
+            text_color: app.light_color
             halign:"center"
             text:root.text   
     """
@@ -136,12 +137,21 @@ class LoadingScreen(ModalView):
 
 
 class RoundButton(MDFillRoundFlatButton):
+    Builder.load_string("""
+<RoundButton>:
+    md_bg_color:app.primary_accent
+    theme_text_color:'Custom'
+    text_color:app.theme_cls.primary_color
+""")
     padding = [0, dp(20), 0, dp(20)]
-    _radius = dp(25), dp(25)
+    _radius = dp(15), dp(15)
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.theme_cls.bind(primary_hue=self.update_md_bg_color)
+    # def __init__(self, **kwargs):
+    #     super().__init__(**kwargs)
+    #     self.theme_cls.bind(primary_palette=self.update_color)
+    
+    # def update_text_color(self, instance, value):
+    #     return super().update_text_color(instance, value)
 
 
 class RoundIconButton(MDFillRoundFlatIconButton):
@@ -153,7 +163,8 @@ class RoundIconButton(MDFillRoundFlatIconButton):
 
 
 # ---- The below string loads the update dialog box content ----
-Builder.load_string("""
+Builder.load_string(
+    """
 <UpdateContent@MDBoxLayout>
     adaptive_height: True
     padding: 0, dp(15), 0, 0
@@ -194,7 +205,8 @@ class DialogButton(MDFlatButton):
 
 
 class CheckboxLabel(ThemableBehavior, RectangularRippleBehavior, MDBoxLayout):
-    Builder.load_string("""
+    Builder.load_string(
+        """
 <ButtonLabel@ButtonBehavior+MDLabel>
 <CheckboxLabel>
 	adaptive_size:True

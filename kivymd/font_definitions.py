@@ -50,6 +50,10 @@ fonts = [
         "fn_bold": fonts_path + "Poppins-Bold.ttf",
     },
     {
+        "name": "Poppins-Bold",
+        "fn_regular": fonts_path + "Poppins-Bold.ttf",
+    },
+    {
         "name": "BigCircleFont",
         "fn_regular": fonts_path + "DejavuSans.ttf",
     },

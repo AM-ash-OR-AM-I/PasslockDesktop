@@ -1,6 +1,5 @@
 from kivy import platform
 from kivy.animation import Animation
-from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.properties import (
@@ -11,7 +10,6 @@ from kivy.properties import (
     ListProperty,
 )
 from kivy.utils import get_color_from_hex
-from kivy.uix.textinput import TextInput
 
 from kivymd.app import MDApp
 from kivymd.color_definitions import colors
@@ -20,12 +18,11 @@ from kivymd.theming import ThemableBehavior
 from kivymd.uix.button import MDIconButton
 from kivymd.uix.relativelayout import MDRelativeLayout
 
-if platform == "android":
-    from libs.modules.AndroidAPI import fix_back_button, keyboard_height
+
 
 Builder.load_string("""
 <CardTextField>
-    height: '60dp'
+    height: '50dp'
     size_hint_y:None
     size_hint_x:.85
     radius: dp(30)
@@ -52,7 +49,7 @@ Builder.load_string("""
 		text_color:app.text_color
         size_hint_x:0.8
         font_size:root.label_size
-        font_name:'RobotoMedium'
+        font_name:'Poppins'
     MDCard:
         id: card
         height: root.height
@@ -73,6 +70,7 @@ Builder.load_string("""
         spacing:'5dp'
         MDBoxLayout:
             id: left_actions
+            pos_hint:{"center_y":.5}
             adaptive_size: True
         TextInput:
             id: textfield
@@ -102,6 +100,7 @@ Builder.load_string("""
             center_x: card.center_x
         MDBoxLayout:
             id: right_actions
+            pos_hint:{"center_y":.5}
             adaptive_size: True
 """
 )
@@ -115,7 +114,7 @@ class CardTextField(MDRelativeLayout, ThemableBehavior):
     text_font_size = StringProperty("17sp")
     hint_text_color = ColorProperty(None)
     text = StringProperty("")
-    thickness = NumericProperty(dp(1) if platform == "android" else dp(1.4))
+    thickness = NumericProperty(dp(1))
     hint_text = StringProperty("")
     text_validate = BooleanProperty(False)
     label_size = StringProperty("20dp")
@@ -212,10 +211,6 @@ class CardTextField(MDRelativeLayout, ThemableBehavior):
     def on_focus(self, instance, focus):
         if self.app is None:
             self.app = MDApp.get_running_app()
-        if platform == "android":
-            if not focus:
-                fix_back_button()
-
         if focus:
             self.border_color = self.active_color
         else:
