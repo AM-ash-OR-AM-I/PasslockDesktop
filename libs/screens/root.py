@@ -24,6 +24,7 @@ class Root(ScreenManager):
         _from_goback=False,
         set_current=True,
         empty_history=False,
+        add=True
     ):
         # checks that the screen already added to the screen-manager
         if not self.has_screen(screen_name):
@@ -35,10 +36,11 @@ class Root(ScreenManager):
             self.screen_object = eval(f"{screen_name}()")
             # automatically sets the screen name using the arg that passed in set_current
             self.screen_object.name = screen_name
-            # saves screen instance object to access later.
-            exec(f"self.{screen_name} = self.screen_object")
-            # finnaly adds the screen to the screen-manager
-            self.add_widget(self.screen_object)
+            if add:
+                # saves screen instance object to access later.
+                exec(f"self.{screen_name} = self.screen_object")
+                # finnaly adds the screen to the screen-manager
+                self.add_widget(self.screen_object)
 
         # saves screen information to history
         # if you not want a screen to go back

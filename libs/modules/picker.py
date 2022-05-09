@@ -56,7 +56,8 @@ class MDThemePicker(AKAlertDialog):
         self.update_bg_color()
         MDApp.get_running_app().bind(primary_palette=self.update_bg_color)
         self.size_portrait = ["320dp", "180dp"]
-    
+        self.size_landscape = ["320dp", "90dp"]
+
     def update_bg_color(self, *args):
         self.bg_color = MDApp.get_running_app().primary_accent
 

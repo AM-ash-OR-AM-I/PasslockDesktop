@@ -6,6 +6,7 @@ from kivy.clock import Clock
 from kivymd .toast import toast
 from kivymd.uix.screen import MDScreen
 from libs.modules.picker import MDThemePicker
+from kivy.lang.builder import Builder
 from libs.utils import remove_user_data
 from kivymd.app import MDApp
 from libs.modules.dialogs import AKAlertDialog
@@ -18,6 +19,7 @@ class SettingsScreen(MDScreen):
     theme_picker = None
     YOUTUBE_VIDEO_LINK = "https://www.youtube.com/watch?v=EOkMDc5mZWI&list=PLUdItSprD91ybWz6uxs4zF4Gux_vzdbZh&index=1"
     GITHUB_REPO_LINK = "https://github.com/AM-ash-OR-AM-I/Passlock"
+    Builder.load_file("libs/screens/SettingsScreen/SettingsScreen.kv")
 
     def logout(self):
         app.root.load_screen("SignupScreen", empty_history=True)

@@ -19,7 +19,7 @@ from kivy.clock import Clock
 from kivymd.toast import toast
 from kivymd.app import MDApp
 
-Window.size = (1000, 800)
+Window.size = (1000, 850)
 # Window.maximize()
 
 font_file = "kivymd/fonts/Poppins-Regular.ttf"
@@ -32,13 +32,13 @@ class MainApp(MDApp):
     primary_accent = ColorProperty()
     primary_palette = StringProperty()
     bg_color = ColorProperty()
+    entered_app = BooleanProperty(False)
     email = StringProperty("DemoMail")
 
     password_changed = False
     system_dark_mode = False
     auto_sync = False
     backup_failure = False
-    entered_app = False
 
     encryption_class = None
     update_dialog = None
@@ -82,14 +82,14 @@ class MainApp(MDApp):
         self.auto_sync = check_auto_sync()
         Window.on_minimize = lambda: self.backup_on_pause()
         self.firebase = Firebase()
-        threading.Thread(target=self.set_dark_mode, daemon=True).start()
+        self.set_dark_mode()
         threading.Thread(target=self.set_user_mail, daemon=True).start()
 
     def build(self):
         self.root = Root()
         self.theme_cls.material_style = "M3"
         self.root.load_screen("SignupScreen" if self.signup else "LoginScreen")
-        self.root.load_screen("HomeScreen", set_current=False)
+        # self.root.load_screen("HomeScreen", set_current=False)
         if not self.signup:
             self.root.LoginScreen.ids.password.focus = True
 
@@ -236,21 +236,12 @@ class MainApp(MDApp):
         if self.entered_app:
             current_screen = self.root.current
             if current_screen == "HomeScreen":
-                tab_manager = self.root.current_screen.ids.tab_manager
                 primary_color = Animation(
-                    primary_accent=self.dark_color
-                    if self.dark_mode
-                    else self.light_color,
+                    primary_accent=self.dark_color if self.dark_mode else self.light_color,
+                    bg_color=self.bg_color_dark if self.dark_mode else self.bg_color_light,
                     duration=0.3,
                 )
                 primary_color.start(self)
-                if tab_manager.current == "CreateScreen":
-                    self.anim = Animation(
-                        md_bg_color=self.bg_color_dark if mode else self.bg_color_light,
-                        duration=0.3,
-                    )
-                    self.anim.start(self.root.HomeScreen)
-
                 primary_color.on_complete = self.set_theme_style
         else:
             self.set_theme_style()

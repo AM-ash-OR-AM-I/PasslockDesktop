@@ -18,8 +18,7 @@ from kivymd.uix.button import (
 from kivymd.uix.dialog import MDDialog
 
 # ---- FloatingButton ----
-Builder.load_string(
-    """
+Builder.load_string("""
 <FloatingButton@MDRaisedButton>
     text:"Login"
     markup:True

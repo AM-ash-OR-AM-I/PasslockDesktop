@@ -51,12 +51,11 @@ Builder.load_string("""
         size_hint_x:0.8
         font_size:root.label_size
         font_name:'Poppins'
-    Card:
+    MDCard:
         id: card
         height: root.height
         size_hint_y: None
         radius: root.radius
-        elevation: root.set_elevation
         md_bg_color:root.md_bg_color
         canvas:
             Color:
