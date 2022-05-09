@@ -17,8 +17,8 @@ KV = """
         Ellipse:
             size: self.size
             pos: self.pos
-    theme_text_color:'Custom'
-    text_color: [0,0,0,0]
+    theme_icon_color:'Custom'
+    icon_color: [0,0,0,0]
             
 <PrimaryColorSelector@ColorSelector>
     on_release: 

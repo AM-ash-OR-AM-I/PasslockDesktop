@@ -1,8 +1,7 @@
-#: set icon_size 60
 #: import platform kivy.platform
 #: import Clock kivy.clock.Clock
 #: import colors kivymd.color_definitions.colors
-#: import window kivy.core.window.Window
+#: import Window kivy.core.window.Window
 #: set rad dp(200)
 
 #: set primary_color_hex colors[app.theme_cls.primary_palette][app.theme_cls.primary_hue]
@@ -16,13 +15,13 @@
 			rgba:app.theme_cls.primary_color[:-1]+[.9]
 		Ellipse:
 			size:rad,rad
-			pos:0-rad/2,window.height-rad+20
+			pos:0-rad/2,Window.height-rad+20
 			angle_start:0
 			angle_end:180
 		Color:
 			rgba:app.login_circle_light[:-1]+[.7]
 		Ellipse:
-			pos:0,window.height-rad/2
+			pos:0,Window.height-rad/2
 			size:rad,rad
 			angle_start:90
 			angle_end:270
@@ -32,7 +31,7 @@
 		id: box
 		pos_hint:{"top":.95}
 		orientation:'vertical'
-		spacing:'70dp'
+		spacing:'65dp'
 		MDLabel:
 			adaptive_height:True
 			text:f"LOGIN\nTO [color={primary_color_hex}][u]PASS••[/u]"
@@ -51,11 +50,17 @@
             pos_hint:{'center_x':.5}
             on_text_validate:
                 root.login_button_pressed(password.text)
-    FloatingButton:
-        id: lock
-        text:'LOGIN'
-        on_press:
-            root.login_button_pressed(password.text)
+
+        
+        MDFloatingActionButton:
+            id: lock
+            icon:'login'
+            type:"large"
+            pos_hint:{'center_x':.5}
+            md_bg_color:app.primary_accent
+            icon_color:self.theme_cls.primary_color
+            on_release:
+                root.login_button_pressed(password.text)
 
 	# MDTextButton:
 	# 	id:forgot

@@ -18,7 +18,8 @@ from kivymd.uix.button import (
 from kivymd.uix.dialog import MDDialog
 
 # ---- FloatingButton ----
-Builder.load_string("""
+Builder.load_string(
+    """
 <FloatingButton@MDRaisedButton>
     text:"Login"
     markup:True
@@ -34,11 +35,12 @@ Builder.load_string("""
 
 
 # ---- BorderCard and PasswordCard (Child Classes of CardTextField) ----
-Builder.load_string("""
+Builder.load_string(
+    """
+#: set icon_size 40
 #: import CardTextField libs.modules.CardTextField.CardTextField
 <BorderCard@CardTextField>
 	inactive_color:app.theme_cls.primary_light[:-1]+[.4]
-	icon_font_size:icon_size
     height:"50dp"
     radius:"15dp"
 	thickness:dp(1)
@@ -67,13 +69,13 @@ KV = """
         id: sync_icon
         icon: 'cloud-download' if not root.icon else root.icon
         halign:"center"
-        theme_text_color:"Custom"
-        text_color:app.text_color
+        theme_icon_color:"Custom"
+        icon_color:app.text_color
         font_size: dp(30)
     MDLabel: 
         id: sync_text
-        theme_text_color:"Custom"
-        text_color:app.text_color
+        theme_icon_color:"Custom"
+        icon_color:app.text_color
         font_size: sp(15)
         halign:"center"
         text:"Restoring.." if not root.text else root.text
@@ -109,7 +111,8 @@ class SyncWidget(MDBoxLayout):
 
 class LoadingScreen(ModalView):
     is_open = False
-    Builder.load_string("""
+    Builder.load_string(
+        """
 <LoadingScreen>:
     auto_dismiss: False
     background_color: 0, 0, 0, 0
@@ -137,33 +140,37 @@ class LoadingScreen(ModalView):
 
 
 class RoundButton(MDFillRoundFlatButton):
-    Builder.load_string("""
+    Builder.load_string(
+        """
 <RoundButton>
     md_bg_color:app.primary_accent
     theme_text_color:'Custom'
     text_color:app.theme_cls.primary_color
-""")
-    padding = [0, dp(20), 0, dp(20)]
-    _radius = dp(15), dp(15)
+"""
+    )
+    padding = [0, dp(12), 0, dp(12)]
 
-    # def __init__(self, **kwargs):
-    #     super().__init__(**kwargs)
-    #     self.theme_cls.bind(primary_palette=self.update_color)
-    
+    def set_radius(self, *args) -> None:
+        if self.rounded_button:
+            self._radius = dp(15)
+
     # def update_text_color(self, instance, value):
     #     return super().update_text_color(instance, value)
 
 
 class RoundIconButton(MDFillRoundFlatIconButton):
-    _radius = dp(20)
+    _radius = dp(15)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.theme_cls.bind(primary_hue=self.update_md_bg_color)
+        self.theme_cls.bind(primary_hue=self.set_text_color)
+        self.theme_cls.bind(primary_hue=self.set_button_colors)
+        self.theme_cls.bind(primary_hue=self.set_icon_color)
 
 
 # ---- The below string loads the update dialog box content ----
-Builder.load_string("""
+Builder.load_string(
+    """
 <UpdateContent@MDBoxLayout>
     adaptive_height: True
     padding: 0, dp(15), 0, 0
@@ -180,15 +187,35 @@ Builder.load_string("""
 
 
 class Dialog(MDDialog):
-    radius = [dp(30)] * 4
+    radius = [dp(20)] * 4
+    _anim_duration = 0.25
+    overlay_color = [0, 0, 0, 0.3]
 
     def update_bg_color(self, *args):
         self.md_bg_color = self.app.primary_accent
 
+    def _opening_animation(self):
+        self.opacity = 0
+        anim = Animation(opacity=1, duration=self._anim_duration, t="out_quad")
+        anim.start(self)
+
+    def _dismiss_animation(self):
+        anim = Animation(opacity=0, duration=self._anim_duration - 0.05, t="out_quad")
+        anim.start(self)
+
+    def on_pre_open(self):
+        self._opening_animation()
+        return super().on_pre_open()
+
+    def on_dismiss(self):
+        self._dismiss_animation()
+        # return super().on_dismiss()
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.app = MDApp.get_running_app()
-        self.size_hint_x = 0.85
+        self.size_hint_x = None
+        self.width = dp(400)
         self.md_bg_color = self.app.primary_accent
         self.theme_cls.bind(theme_style=self.update_bg_color)
         self.app.bind(primary_accent=self.update_bg_color)

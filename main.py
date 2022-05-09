@@ -19,7 +19,7 @@ from kivy.clock import Clock
 from kivymd.toast import toast
 from kivymd.app import MDApp
 
-Window.size = (1200, 800)
+Window.size = (1000, 800)
 # Window.maximize()
 
 font_file = "kivymd/fonts/Poppins-Regular.ttf"
@@ -72,6 +72,7 @@ class MainApp(MDApp):
                 "H5": [font_file, 24, False, 0],
                 "H6": [font_file, 20, False, 0.15],
                 "Button": [font_file, 14, True, 1.25],
+                "Subtitle1": [font_file, 16, False, 0.15],
                 "Body1": [font_file, 16, False, 0.5],
                 "Body2": [font_file, 14, False, 0.25],
             }
@@ -86,6 +87,7 @@ class MainApp(MDApp):
 
     def build(self):
         self.root = Root()
+        self.theme_cls.material_style = "M3"
         self.root.load_screen("SignupScreen" if self.signup else "LoginScreen")
         self.root.load_screen("HomeScreen", set_current=False)
         if not self.signup:

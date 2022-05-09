@@ -77,18 +77,18 @@ class Toolbar(
             if len(icon_left_action) == 1:
                 self.icon_left = MDIconButton(
                     icon=icon_left_action[0],
-                    theme_text_color="Custom",
-                    text_color=self.icon_color,
-                    user_font_size=self.text_height,
+                    theme_icon_color="Custom",
+                    icon_color=self.icon_color,
+                    icon_size=self.text_height,
                     pos_hint={"center_y": 0.5},
                 )
 
             else:
                 self.icon_left = MDIconButton(
                     icon=icon_left_action[0],
-                    theme_text_color="Custom",
-                    text_color=self.icon_color,
-                    user_font_size=self.text_height,
+                    theme_icon_color="Custom",
+                    icon_color=self.icon_color,
+                    icon_size=self.text_height,
                     pos_hint={"center_y": 0.5},
                     on_release=icon_left_action[1],
                 )
@@ -101,18 +101,18 @@ class Toolbar(
             if len(icon_right_action) == 1:
                 self.icon_right = MDIconButton(
                     icon=icon_right_action[0],
-                    theme_text_color="Custom",
-                    text_color=self.icon_color,
-                    user_font_size=self.text_height,
+                    theme_icon_color="Custom",
+                    icon_color=self.icon_color,
+                    icon_size=self.text_height,
                     pos_hint={"center_y": 0.5},
                 )
 
             else:
                 self.icon_right = MDIconButton(
                     icon=icon_right_action[0],
-                    theme_text_color="Custom",
-                    text_color=self.icon_color,
-                    user_font_size=self.text_height,
+                    theme_icon_color="Custom",
+                    icon_color=self.icon_color,
+                    icon_size=self.text_height,
                     pos_hint={"center_y": 0.5},
                     on_release=icon_right_action[1],
                 )
@@ -120,9 +120,9 @@ class Toolbar(
 
     def on_icon_color(self, instance, color):
         for icon in self.ids.left_action_box.children:
-            icon.text_color = color
+            icon.icon_color = color
         for icon in self.ids.right_action_box.children:
-            icon.text_color = color
+            icon.icon_color = color
 
 
 if __name__ == "__main__":

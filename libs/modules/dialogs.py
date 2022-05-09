@@ -20,6 +20,8 @@ Builder.load_string("""
 
 <AKAlertDialog>:
     size_hint: alert.width / Window.width, alert.height / Window.height
+    background_color: [0,0,0,0]
+    overlay_color: [0,0,0,0.25]
     MainAlertBox:   
         id: alert
         size_hint: None,None

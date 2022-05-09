@@ -1,3 +1,4 @@
+from email import message
 import threading
 from functools import partial
 
@@ -6,6 +7,7 @@ from kivy.uix.scrollview import ScrollView
 from kivymd.uix.tab import MDTabsBase
 from kivy.factory import Factory
 from kivy.properties import ListProperty
+from kivy.clock import mainthread
 
 from kivymd.toast import toast
 from kivymd.uix.screen import MDScreen
@@ -52,6 +54,17 @@ class FindScreen(MDScreen):
         )
 
     def find_password(self, text, from_update = False):
+        
+        @mainthread
+        def add_item():
+            if self.find_dictionary:
+                    self.ids.find_label.opacity = 0
+            else:
+                self.ids.find_label.opacity = 0.5
+                self.ids.find_label.text = "No results found :("
+            self.rv_data = []
+            for ((name, password), value) in self.find_dictionary:
+                self.append_item(name, password)
         """
         Gets executed when text is entered in search bar.
         """
@@ -67,14 +80,7 @@ class FindScreen(MDScreen):
                 self.find_dictionary = app.encryption_class.find_key(
                     app.passwords, text
                 )
-                if self.find_dictionary:
-                    self.ids.find_label.opacity = 0
-                else:
-                    self.ids.find_label.opacity = 0.5
-                    self.ids.find_label.text = "No results found :("
-                self.rv_data = []
-                for ((name, password), value) in self.find_dictionary:
-                    self.append_item(name, password)
+                add_item()
 
             threading.Thread(
                 target=find_password_thread, args=(text,), daemon=True
@@ -255,6 +261,10 @@ class HomeScreen(MDScreen):
         self.sync_widget = self.get_sync_widget()
         app.restore(self.sync_widget, user_id)
 
+    @mainthread
+    def show_toast(self, message):
+        toast(message)
+            
     def create_password(self, name, password):
         def add_pass(name: str, password: str):
             if name.strip() and password.strip():
@@ -262,13 +272,14 @@ class HomeScreen(MDScreen):
                 if success:
                     # Updates passwords dictionary.
                     app.passwords[name] = password
-                    toast("Password Created Successfully.")
+                    message = "Password Created Successfully."
                 else:
-                    toast("Password already exists.")
+                    message = "Password already exists."
             elif not name.strip():
-                toast("Name can't be empty")
+                message = "Name can't be empty"
             else:
-                toast("Password can't be empty")
+                message = "Password can't be empty"
+            self.show_toast(message)
         threading.Thread(
             target=add_pass,
             args=(name, password),

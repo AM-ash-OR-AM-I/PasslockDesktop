@@ -18,19 +18,20 @@
         width: dp(44)
     IconLeftWidget:
         icon: root.icon
-        theme_text_color:'Custom'
-        text_color:app.text_color
+        theme_icon_color:'Custom'
+        icon_color:app.text_color
         
 <MyListItem@OneLineIconListItem>
     theme_text_color:'Custom'
     text_color:app.text_color
     icon:"android"
     icon_color: []
+    height: "56dp"
     ripple_alpha:.1
     IconLeftWidget:
         icon: root.icon
-        theme_text_color:'Custom'
-        text_color:root.text_color if not root.icon_color else root.icon_color
+        theme_icon_color:'Custom'
+        icon_color:root.text_color if not root.icon_color else root.icon_color
 
 <AboutClass@BoxLayout>
     orientation:'vertical'
@@ -75,6 +76,8 @@
             icon_color:app.theme_cls.primary_color
             left_action_items:[['arrow-left',lambda x: app.root.goback()]]
         ScrollView:
+            always_overscroll:False
+            smooth_scroll_end: 8
             MDBoxLayout:
                 adaptive_height:True
                 pos_hint:{"top":1}

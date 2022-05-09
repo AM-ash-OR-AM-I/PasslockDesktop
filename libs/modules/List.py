@@ -51,8 +51,8 @@ KV = """
 			disabled: not root.selected
 			md_bg_color_disabled:[0,0,0,0]
 			icon:'pencil-outline'
-			theme_text_color:"Custom"
-			text_color: app.text_color
+			theme_icon_color:"Custom"
+			icon_color: app.text_color
 			pos_hint:{'center_y':.5} 
 			# text_color:[.3,.3,.3,1]
 		MDIconButton:
@@ -60,8 +60,8 @@ KV = """
 			disabled: not root.selected
 			md_bg_color_disabled:[0,0,0,0]
 			icon:'trash-can-outline'
-			theme_text_color:"Custom"
-			text_color: app.text_color
+			theme_icon_color:"Custom"
+			icon_color: app.text_color
 			pos_hint:{'center_y':.5}
 
 """

@@ -15,7 +15,7 @@ class Root(ScreenManager):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         Window.bind(on_keyboard=self._handle_keyboard)
-        self.transition = CardTransition(duration=0.3)
+        # self.transition = CardTransition(duration=0.3)
 
     def load_screen(
         self,
