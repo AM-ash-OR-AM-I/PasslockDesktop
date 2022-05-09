@@ -26,7 +26,7 @@ Builder.load_string("""
     md_bg_color:app.light_color if not app.dark_mode else app.dark_color
     theme_text_color:'Custom'
     text_color:app.theme_cls.primary_color
-    font_size:sp(16)
+    font_size:sp(18)
     size_hint_x:1
     elevation:0
     """
@@ -138,7 +138,7 @@ class LoadingScreen(ModalView):
 
 class RoundButton(MDFillRoundFlatButton):
     Builder.load_string("""
-<RoundButton>:
+<RoundButton>
     md_bg_color:app.primary_accent
     theme_text_color:'Custom'
     text_color:app.theme_cls.primary_color
@@ -163,8 +163,7 @@ class RoundIconButton(MDFillRoundFlatIconButton):
 
 
 # ---- The below string loads the update dialog box content ----
-Builder.load_string(
-    """
+Builder.load_string("""
 <UpdateContent@MDBoxLayout>
     adaptive_height: True
     padding: 0, dp(15), 0, 0
