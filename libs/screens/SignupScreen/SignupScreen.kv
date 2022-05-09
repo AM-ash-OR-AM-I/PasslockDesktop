@@ -68,13 +68,13 @@
         adaptive_height:True
         FloatingButton:
             id: signup
-            text:'Signup'
+            text:'SIGN UP'
             on_release:
                 root.button_pressed(email.text, password.text, signup=True)
             pos_hint:{'center_x':.5}
         FloatingButton:
             id: login
-            text:'Login'
+            text:'LOGIN'
             md_bg_color:app.primary_accent
             on_release:
                 root.button_pressed(email.text, password.text, signup=False)
