@@ -226,5 +226,4 @@ class Encryption:
                     fuzzy_search(text, name, password)
         
         result = sort_keys(weighted_pass)
-        print(result)
         return result
