@@ -22,13 +22,14 @@ Builder.load_string("""
 <FloatingButton@MDRaisedButton>
     text:"Login"
     markup:True
-    font_name:"Poppins-Bold"
+    font_name:"Poppins"
     md_bg_color:app.light_color if not app.dark_mode else app.dark_color
     theme_text_color:'Custom'
     text_color:app.theme_cls.primary_color
     font_size:sp(18)
     size_hint_x:1
-    elevation:0
+    elevation:5
+    radius:dp(10)
     """
 )
 
@@ -68,6 +69,7 @@ KV = """
         id: sync_icon
         icon: 'cloud-download' if not root.icon else root.icon
         halign:"center"
+        pos_hint:{"center_x":.5}
         theme_icon_color:"Custom"
         icon_color:app.text_color
         font_size: dp(30)
@@ -224,9 +226,7 @@ class DialogButton(MDFlatButton):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.theme_text_color = "Custom"
-        self.font_name = "RobotoMedium"
         self.font_size = "16sp"
-        self.text_color = self.theme_cls.primary_color
 
 
 class CheckboxLabel(ThemableBehavior, RectangularRippleBehavior, MDBoxLayout):

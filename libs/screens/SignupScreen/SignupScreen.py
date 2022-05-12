@@ -69,6 +69,7 @@ class SignupScreen(MDScreen):
         self.firebase.signup_success = lambda req, result: signup_success(req, result)
         self.firebase.signup_failure = lambda req, result: signup_failure(req, result)
         self.firebase.signup(email, password)
+        # app.root.load_screen("HomeScreen", set_current=False)
 
     def login(self, email, password):
         def login_success(req, result):
@@ -88,14 +89,13 @@ class SignupScreen(MDScreen):
         self.firebase.login_success = lambda req, result: login_success(req, result)
         self.firebase.login_failure = lambda req, result: login_failure(req, result)
         self.firebase.login(email, password)
-        app.root.load_screen("HomeScreen", set_current=False)
+        
 
     def button_pressed(self, email, password, signup):
-        # TODO: Save user email and show in settings screen.
         def import_encryption():
             from libs.encryption import Encryption
-
             self.encryption = Encryption
+            app.root.load_screen("HomeScreen", set_current=False)
 
         self.email = email
         self.password = password

@@ -517,9 +517,7 @@ from kivymd.uix.behaviors import (
 from kivymd.uix.label import MDLabel
 from kivymd.uix.tooltip import MDTooltip
 
-with open(
-    os.path.join(uix_path, "button", "button.kv"), encoding="utf-8"
-) as kv_file:
+with open(os.path.join(uix_path, "button", "button.kv"), encoding="utf-8") as kv_file:
     Builder.load_string(kv_file.read())
 
 
@@ -843,9 +841,7 @@ class BaseButton(
 
         # Set line color
         self._line_color = (
-            self.line_color
-            or self._default_line_color
-            or self.theme_cls.primary_color
+            self.line_color or self._default_line_color or self.theme_cls.primary_color
         )
 
         # Set disabled line color
@@ -866,9 +862,7 @@ class BaseButton(
         Set _theme_text_color and _text_color based on defaults and options.
         """
 
-        self._theme_text_color = (
-            self.theme_text_color or self._default_theme_text_color
-        )
+        self._theme_text_color = self.theme_text_color or self._default_theme_text_color
         if self._default_text_color == "PrimaryHue":
             default_text_color = text_colors[self.theme_cls.primary_palette][
                 self.theme_cls.primary_hue
@@ -884,9 +878,7 @@ class BaseButton(
         Set _theme_icon_color and _icon_color based on defaults and options.
         """
 
-        self._theme_icon_color = (
-            self.theme_icon_color or self._default_theme_icon_color
-        )
+        self._theme_icon_color = self.theme_icon_color or self._default_theme_icon_color
         if self._default_icon_color == "PrimaryHue":
             default_icon_color = text_colors[self.theme_cls.primary_palette][
                 self.theme_cls.primary_hue
@@ -975,9 +967,7 @@ class ButtonElevationBehaviour(CommonElevationBehavior):
         self._elevation_raised = self.elevation + 6
         self.on_disabled(self, self.disabled)
 
-    def on__elevation_raised(
-        self, instance_button, elevation_value: int
-    ) -> None:
+    def on__elevation_raised(self, instance_button, elevation_value: int) -> None:
         Animation.cancel_all(self, "_elevation")
         self._anim_raised = Animation(_elevation=self._elevation_raised, d=0.15)
 
@@ -1130,9 +1120,7 @@ class MDRectangleFlatButton(ButtonContentsText, BaseButton):
     _default_text_color = "Primary"
 
 
-class MDRectangleFlatIconButton(
-    OldButtonIconMixin, ButtonContentsIconText, BaseButton
-):
+class MDRectangleFlatIconButton(OldButtonIconMixin, ButtonContentsIconText, BaseButton):
     """
     A flat button with (by default) a primary color border, primary color text
     and a primary color icon on the left.
@@ -1293,7 +1281,7 @@ class MDFloatingActionButton(
     button.
     """
 
-    type = OptionProperty("standard", options=["small", "large", "standard"])
+    type = OptionProperty("standard", options=["small", "large", "standard", "custom"])
     """
     Type of M3 button.
 
@@ -1327,6 +1315,8 @@ class MDFloatingActionButton(
         if self.theme_cls.material_style == "M3":
             if self.type == "large":
                 self.icon_size = "36sp"
+            elif self.type == "custom":
+                self.icon_size = "28sp"
             else:
                 self.icon_size = 0
 
@@ -1341,6 +1331,8 @@ class MDFloatingActionButton(
                 self._radius = dp(16)
             elif self.type == "large":
                 self._radius = dp(28)
+            elif self.type == "custom":
+                self._radius = int(self.size[0] / 3.3)
 
     def set_size(self, *args) -> None:
         if self.theme_cls.material_style == "M2":
@@ -1352,6 +1344,8 @@ class MDFloatingActionButton(
                 self.size = dp(56), dp(56)
             elif self.type == "large":
                 self.size = dp(96), dp(96)
+            elif self.type == "custom":
+                self.size = self.size
 
     def on_type(self, instance_md_floating_action_button, type: str) -> None:
         self.set_size()
@@ -1422,9 +1416,7 @@ class BaseFloatingBottomButton(MDFloatingActionButton, MDTooltip):
 
 # FIXME: Use :class:`~kivymd.uix.boxlayout.MDBoxLayout` instead
 #  :class:`~kivy.uix.boxlayout.BoxLayout`.
-class BaseFloatingLabel(
-    ThemableBehavior, FakeRectangularElevationBehavior, BoxLayout
-):
+class BaseFloatingLabel(ThemableBehavior, FakeRectangularElevationBehavior, BoxLayout):
     text = StringProperty()
     text_color = ColorProperty(None)
     bg_color = ColorProperty(None)
@@ -1712,10 +1704,7 @@ class MDFloatingActionButtonSpeedDial(ThemableBehavior, FloatLayout):
                                 d=self.opening_time,
                                 t=self.opening_transition,
                             ).start(instance_button)
-                            if (
-                                instance_button.icon
-                                == self.data[f"{widget.text}"]
-                            ):
+                            if instance_button.icon == self.data[f"{widget.text}"]:
                                 Animation(
                                     opacity=1,
                                     d=self.opening_time,
@@ -1753,9 +1742,7 @@ class MDFloatingActionButtonSpeedDial(ThemableBehavior, FloatLayout):
                 on_leave=self.on_leave,
                 opacity=0,
             )
-            bottom_button.bind(
-                on_release=lambda x=bottom_button: self.callback(x)
-            )
+            bottom_button.bind(on_release=lambda x=bottom_button: self.callback(x))
             self.set_pos_bottom_buttons(bottom_button)
             self.add_widget(bottom_button)
             # Labels.
@@ -1778,9 +1765,7 @@ class MDFloatingActionButtonSpeedDial(ThemableBehavior, FloatLayout):
             if isinstance(widget, MDFloatingLabel):
                 widget.text_color = color
 
-    def on_color_icon_stack_button(
-        self, instance_speed_dial, color: list
-    ) -> None:
+    def on_color_icon_stack_button(self, instance_speed_dial, color: list) -> None:
         for widget in self.children:
             if isinstance(widget, MDFloatingBottomButton):
                 widget.text_color = color
@@ -1795,14 +1780,10 @@ class MDFloatingActionButtonSpeedDial(ThemableBehavior, FloatLayout):
             if isinstance(widget, MDFloatingBottomButton):
                 widget._bg_color = color
 
-    def on_color_icon_root_button(
-        self, instance_speed_dial, color: list
-    ) -> None:
+    def on_color_icon_root_button(self, instance_speed_dial, color: list) -> None:
         self._get_count_widget(MDFloatingRootButton).text_color = color
 
-    def on_bg_color_stack_button(
-        self, instance_speed_dial, color: list
-    ) -> None:
+    def on_bg_color_stack_button(self, instance_speed_dial, color: list) -> None:
         for widget in self.children:
             if isinstance(widget, MDFloatingBottomButton):
                 widget.md_bg_color = color
@@ -1851,9 +1832,7 @@ class MDFloatingActionButtonSpeedDial(ThemableBehavior, FloatLayout):
                 + instance_floating_bottom_button.width / 2
             )
 
-    def open_stack(
-        self, instance_floating_root_button: MDFloatingRootButton
-    ) -> None:
+    def open_stack(self, instance_floating_root_button: MDFloatingRootButton) -> None:
         """Opens a button stack."""
 
         for widget in self.children:
@@ -1888,10 +1867,7 @@ class MDFloatingActionButtonSpeedDial(ThemableBehavior, FloatLayout):
                         anim_labels_data[widget] = Animation(
                             opacity=1, d=self.opening_time
                         )
-                elif (
-                    isinstance(widget, MDFloatingRootButton)
-                    and self.root_button_anim
-                ):
+                elif isinstance(widget, MDFloatingRootButton) and self.root_button_anim:
                     # Rotates the root button 45 degrees.
                     Animation(
                         _angle=-45,
@@ -1954,10 +1930,7 @@ class MDFloatingActionButtonSpeedDial(ThemableBehavior, FloatLayout):
                 ).start(widget)
             elif isinstance(widget, MDFloatingLabel):
                 Animation(opacity=0, d=0.1).start(widget)
-            elif (
-                isinstance(widget, MDFloatingRootButton)
-                and self.root_button_anim
-            ):
+            elif isinstance(widget, MDFloatingRootButton) and self.root_button_anim:
                 Animation(
                     _angle=0,
                     d=self.closing_time_button_rotation,

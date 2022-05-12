@@ -19,9 +19,7 @@ from kivymd.uix.button import MDIconButton
 from kivymd.uix.relativelayout import MDRelativeLayout
 
 
-Builder.load_string("""
-<Card@RoundedRectangularElevationBehavior+MDCard>   
-    shadow_pos: -self.parent.set_elevation/2, -self.parent.set_elevation/2               
+Builder.load_string("""             
 <CardTextField>
     height: '50dp'
     size_hint_y:None

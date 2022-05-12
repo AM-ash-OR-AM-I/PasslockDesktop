@@ -47,6 +47,7 @@
             id: password
             label_name:'Password'
             hint_text:"Enter Password"
+            size_hint_x:.7
             pos_hint:{'center_x':.5}
             on_text_validate:
                 root.login_button_pressed(password.text)
@@ -55,7 +56,8 @@
         MDFloatingActionButton:
             id: lock
             icon:'login'
-            type:"large"
+            type:"custom"
+            size:dp(75),dp(75)
             pos_hint:{'center_x':.5}
             md_bg_color:app.primary_accent
             icon_color:self.theme_cls.primary_color

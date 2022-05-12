@@ -31,6 +31,7 @@ class FindScreen(MDScreen):
     snackbar_duration = 2.5
     delete_dialog = None
 
+    @mainthread
     def show_all_passwords(self):
         self.ids.find_label.opacity = 0
         if self.rv_data:
@@ -57,31 +58,33 @@ class FindScreen(MDScreen):
         
         @mainthread
         def add_item():
+            self.ids.box.clear_selection()
             if self.find_dictionary:
-                    self.ids.find_label.opacity = 0
+                self.ids.find_label.opacity = 0
             else:
                 self.ids.find_label.opacity = 0.5
                 self.ids.find_label.text = "No results found :("
             self.rv_data = []
             for ((name, password), value) in self.find_dictionary:
                 self.append_item(name, password)
+                
         """
         Gets executed when text is entered in search bar.
         """
         if not text:
-            self.rv_data = []
-            self.ids.find_label.text = "Type to search"
-            self.ids.find_label.opacity = 0.5
-        else:
             if not from_update:
-                self.ids.box.clear_selection()
-
+                self.rv_data = []
+                self.ids.find_label.text = "Type to search"
+                self.ids.find_label.opacity = 0.5
+            else:
+                self.show_all_passwords()
+        else:
             def find_password_thread(text):
                 self.find_dictionary = app.encryption_class.find_key(
                     app.passwords, text
                 )
                 add_item()
-
+                
             threading.Thread(
                 target=find_password_thread, args=(text,), daemon=True
             ).start()
@@ -99,13 +102,13 @@ class FindScreen(MDScreen):
                     app.encryption_class.delete(app.encrypted_keys[self.original_name])
                     app.passwords[name] = password
                     app.encryption_class.add(name, password)
-                self.find_password(name,from_update=True)
+                self.find_password(self.ids.searchbar.text, from_update=True)
             except KeyError as e:
                 print(f"KeyError, occured while updating password. {e}")
 
         threading.Thread(target=update_thread, daemon=True).start()
         self.update_dialog.dismiss()
-        toast(text=f"{name} is updated")
+        toast(f"{name} is updated")
 
     def open_update_dialog(self, original_name):
         self.original_name = original_name
@@ -130,6 +133,10 @@ class FindScreen(MDScreen):
         self.update_content.ids.name.text = original_name
         self.update_content.ids.password.text = app.passwords[original_name]
         self.update_dialog.open()
+    
+    @mainthread
+    def show_toast(self, message):
+        toast(message)
 
     def delete_from_storage(self, name, dt):
         """
@@ -138,7 +145,7 @@ class FindScreen(MDScreen):
 
         def remove_permanently(encrypted_key):
             app.encryption_class.delete(encrypted_key)
-            toast("Removed Password from storage")
+            self.show_toast("Removed Password from storage")
 
         if self.delete_permanently:
             del app.passwords[name]

@@ -85,6 +85,14 @@ class List(
     _no_ripple_effect = True
     ripple_alpha = 0.1
 
+    def __init__(self) -> None:
+        super().__init__()
+        app.bind(primary_accent=self.update_list_color)
+
+    def update_list_color(self, *args):
+        if self.selected:
+            self.list_color_active = app.primary_accent
+
     def on_button_actions(self, *args):
         if len(self.button_actions) == 3:
             self.ids.copy_button.on_release = self.button_actions["copy"]
@@ -119,7 +127,7 @@ class List(
 
     def on_selected(self, instance, selected):
         if selected:
-            self.list_color_active = self.theme_cls.primary_light[:-1] + [0]
+            self.list_color_active = app.primary_accent[:-1] + [0]
             Animation(
-                list_color_active=self.theme_cls.primary_light[:-1] + [0.3], d=0.1
+                list_color_active=app.primary_accent, d=0.1
             ).start(self)

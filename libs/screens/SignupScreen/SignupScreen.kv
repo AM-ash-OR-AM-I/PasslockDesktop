@@ -1,8 +1,8 @@
 #: import platform kivy.platform
 #: import Clock kivy.clock.Clock
 #: import colors kivymd.color_definitions.colors
-#: import window kivy.core.window.Window
-#: set width window.width
+#: import Window kivy.core.window.Window
+#: set width Window.width
 #: set rad width/3.4
 #: set lbl_size '15sp'
 
@@ -15,13 +15,13 @@
 			rgba:app.theme_cls.primary_color[:-1]+[.9]
 		Ellipse:
 			size:rad,rad
-			pos:0-rad/2,window.height-rad+20
+			pos:0-rad/2,Window.height-rad+20
 			angle_start:0
 			angle_end:180
 		Color:
 			rgba:app.login_circle_light[:-1]+[.7]
 		Ellipse:
-			pos:0,window.height-rad/2
+			pos:0,Window.height-rad/2
 			size:rad,rad
 			angle_start:90
 			angle_end:270
@@ -52,8 +52,8 @@
 				id: email
 				label_name:'Email Address'
 				hint_text:"e.g. username@mail.com"
+                size_hint_x:.7
 				pos_hint:{'center_x':.5}
-				icon_left_action:['account']
 			MDBoxLayout:
 				adaptive_height:True
 				orientation:'vertical'
@@ -61,23 +61,29 @@
 				PasswordCard:
 					id: password
 					label_name:'Password'
+                    size_hint_x:.7
 					hint_text:"Enter Password"
 					pos_hint:{'center_x':.5}
-    MDBoxLayout:
-        adaptive_height:True
-        FloatingButton:
-            id: signup
-            text:'SIGN UP'
-            on_release:
-                root.button_pressed(email.text, password.text, signup=True)
+        MDBoxLayout:
+            adaptive_height:True
+            spacing:"20dp"
+            size_hint_x:.7
             pos_hint:{'center_x':.5}
-        FloatingButton:
-            id: login
-            text:'LOGIN'
-            md_bg_color:app.primary_accent
-            on_release:
-                root.button_pressed(email.text, password.text, signup=False)
-            pos_hint:{'center_x':.5}
+            RoundButton:
+                id: signup
+                text:'SIGN UP'
+                size_hint_x:1
+                on_release:
+                    root.button_pressed(email.text, password.text, signup=True)
+                pos_hint:{'center_x':.5}
+            RoundButton:
+                id: login
+                text:'LOGIN'
+                size_hint_x:1
+                md_bg_color:app.primary_accent
+                on_release:
+                    root.button_pressed(email.text, password.text, signup=False)
+                pos_hint:{'center_x':.5}
                     
 
 	# MDSeparator:

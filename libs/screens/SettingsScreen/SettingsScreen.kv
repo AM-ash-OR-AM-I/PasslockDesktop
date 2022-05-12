@@ -72,7 +72,7 @@
         MDBoxLayout:
             adaptive_height:True
             pos_hint:{"top":1}
-            padding:0, dp(15)
+            padding:dp(95), dp(15), dp(15),dp(10)
             orientation:'vertical'
             spacing:'15dp'
             MDLabel:
@@ -124,15 +124,6 @@
                     active: app.system_dark_mode
                     on_active: 
                         app.system_dark_mode = self.active
-                    
-                SwitchListItem:
-                    text:"Extra Security"
-                    icon:"shield-star" if self.active else "shield-off-outline"
-                    secondary_text:"Login when you leave the app"
-                    tertiary_text: "for more than 5 minutes."
-                    active: app.extra_security
-                    on_active: 
-                        app.extra_security = self.active
                 
 
             MDSeparator:
