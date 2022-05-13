@@ -57,13 +57,12 @@ Builder.load_string(
 KV = """
 <SyncWidget>
     padding:"14dp"
-    pos_hint:{"center_x":.8,"center_y":.1}
     md_bg_color:app.primary_accent
     orientation:"vertical"
     size_hint_y:None
     height: dp(100)
     size_hint_x:None
-    width: self.height + dp(10)
+    width: self.height + dp(20)
     radius:"25dp"
     MDIcon:
         id: sync_icon

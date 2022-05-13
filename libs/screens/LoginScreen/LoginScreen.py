@@ -19,7 +19,7 @@ class LoginScreen(MDScreen):
 
     def get_sync_widget(self):
         if self.sync_widget is None:
-            self.sync_widget = SyncWidget(pos_hint={"center_x":.8,"center_y":.1})
+            self.sync_widget = SyncWidget(pos_hint={"center_x":.85,"center_y":.12})
             self.add_widget(self.sync_widget)
         return self.sync_widget
 

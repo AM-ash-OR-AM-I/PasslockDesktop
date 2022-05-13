@@ -14,7 +14,13 @@ from kivymd.uix.screen import MDScreen
 from kivymd.app import MDApp
 from kivymd.material_resources import dp
 
-from libs.screens.classes import Dialog, DialogButton, RoundIconButton, CustomSnackbar, SyncWidget
+from libs.screens.classes import (
+    Dialog,
+    DialogButton,
+    RoundIconButton,
+    CustomSnackbar,
+    SyncWidget,
+)
 from libs.utils import auto_password
 
 app = MDApp.get_running_app()
@@ -54,8 +60,7 @@ class FindScreen(MDScreen):
             }
         )
 
-    def find_password(self, text, from_update = False):
-        
+    def find_password(self, text, from_update=False):
         @mainthread
         def add_item():
             self.ids.box.clear_selection()
@@ -67,7 +72,7 @@ class FindScreen(MDScreen):
             self.rv_data = []
             for ((name, password), value) in self.find_dictionary:
                 self.append_item(name, password)
-                
+
         """
         Gets executed when text is entered in search bar.
         """
@@ -79,12 +84,13 @@ class FindScreen(MDScreen):
             else:
                 self.show_all_passwords()
         else:
+
             def find_password_thread(text):
                 self.find_dictionary = app.encryption_class.find_key(
                     app.passwords, text
                 )
                 add_item()
-                
+
             threading.Thread(
                 target=find_password_thread, args=(text,), daemon=True
             ).start()
@@ -92,6 +98,7 @@ class FindScreen(MDScreen):
     def update_password(self) -> None:
         name = self.update_content.ids.name.text
         password = self.update_content.ids.password.text
+
         def update_thread():
             try:
                 if name == self.original_name:
@@ -118,7 +125,6 @@ class FindScreen(MDScreen):
                 title="Update",
                 type="custom",
                 content_cls=self.update_content,
-                pos_hint={"center_y": 0.6},
                 buttons=[
                     DialogButton(
                         text="Cancel", on_release=lambda x: self.update_dialog.dismiss()
@@ -133,7 +139,7 @@ class FindScreen(MDScreen):
         self.update_content.ids.name.text = original_name
         self.update_content.ids.password.text = app.passwords[original_name]
         self.update_dialog.open()
-    
+
     @mainthread
     def show_toast(self, message):
         toast(message)
@@ -188,7 +194,7 @@ class FindScreen(MDScreen):
         self.snackbar.duration = self.snackbar_duration
         self.snackbar.open()
         Clock.schedule_once(
-            partial(self.delete_from_storage, name), self.snackbar_duration + .1
+            partial(self.delete_from_storage, name), self.snackbar_duration + 0.1
         )
 
 
@@ -230,10 +236,10 @@ class HomeScreen(MDScreen):
 
     sync_widget = None
     sync_dialog = None
-    
+
     def get_sync_widget(self):
         if self.sync_widget is None:
-            self.sync_widget = SyncWidget(pos_hint={"center_x":.8,"center_y":.1})
+            self.sync_widget = SyncWidget(pos_hint={"center_x": 0.85, "center_y": 0.12})
             self.add_widget(self.sync_widget)
         return self.sync_widget
 
@@ -262,7 +268,7 @@ class HomeScreen(MDScreen):
         self.sync_widget = self.get_sync_widget()
         app.backup(self.sync_widget)
 
-    def restore(self, user_id = None):
+    def restore(self, user_id=None):
         if self.sync_dialog:
             self.sync_dialog.dismiss()
         self.sync_widget = self.get_sync_widget()
@@ -271,7 +277,7 @@ class HomeScreen(MDScreen):
     @mainthread
     def show_toast(self, message):
         toast(message)
-            
+
     def create_password(self, name, password):
         def add_pass(name: str, password: str):
             if name.strip() and password.strip():
@@ -287,10 +293,9 @@ class HomeScreen(MDScreen):
             else:
                 message = "Password can't be empty"
             self.show_toast(message)
+
         threading.Thread(
             target=add_pass,
             args=(name, password),
             daemon=True,
         ).start()
-        
-        
