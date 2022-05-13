@@ -10,6 +10,9 @@ from kivy.factory import Factory
 
 from libs.firebase import Firebase
 
+# Don't remove sync widget as all classes gets loaded over here.
+from libs.screens.classes import SyncWidget
+
 app = MDApp.get_running_app()
 
 
