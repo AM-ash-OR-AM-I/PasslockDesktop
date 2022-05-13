@@ -1,20 +1,29 @@
+import sys
 import threading
 from colorsys import rgb_to_hls, hls_to_rgb
 import os.path
+
+# Can't get it to work in `encryption.py` file, while using .exe thus had to add it in main.py
+import hashlib
+from Crypto import Random
+from Crypto.Cipher import AES
+from base64 import urlsafe_b64encode, urlsafe_b64decode
+
 from libs.screens.root import Root
 from libs.firebase import Firebase
 from libs.utils import *
 
+from kivy.resources import resource_add_path
 from kivy.core.clipboard import Clipboard
 from kivy.animation import Animation
 from kivy.core.window import Window
+from kivy.clock import Clock
 from kivy.properties import (
     BooleanProperty,
     ColorProperty,
     get_color_from_hex,
     StringProperty,
 )
-from kivy.clock import Clock
 
 from kivymd.toast import toast
 from kivymd.app import MDApp
@@ -291,4 +300,6 @@ class MainApp(MDApp):
 
 
 if __name__ == "__main__":
+    if hasattr(sys, '_MEIPASS'):
+        resource_add_path(os.path.join(sys._MEIPASS))
     MainApp().run()
