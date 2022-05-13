@@ -13,7 +13,6 @@ from libs.screens.root import Root
 from libs.firebase import Firebase
 from libs.utils import *
 
-from kivy.resources import resource_add_path
 from kivy.core.clipboard import Clipboard
 from kivy.animation import Animation
 from kivy.core.window import Window
@@ -300,6 +299,4 @@ class MainApp(MDApp):
 
 
 if __name__ == "__main__":
-    if hasattr(sys, '_MEIPASS'):
-        resource_add_path(os.path.join(sys._MEIPASS))
     MainApp().run()
