@@ -3,3 +3,9 @@ __pycache__
 Data
 kivymd_original
 app_build
+
+config.json
+email.txt
+encrypted_file.txt
+passwords
+user_id.txt

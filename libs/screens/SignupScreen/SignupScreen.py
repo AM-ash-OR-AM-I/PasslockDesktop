@@ -9,7 +9,6 @@ from kivy.properties import BooleanProperty
 from kivy.factory import Factory
 
 from libs.firebase import Firebase
-from libs.screens.classes import SyncWidget
 
 app = MDApp.get_running_app()
 
@@ -53,7 +52,9 @@ class SignupScreen(MDScreen):
             toast("Signup successful")
             app.encryption_class = self.encryption(self.password)
             self.dismiss_loading()
-            threading.Thread(target=self.save_uid_password, args=(user_id, email)).start()
+            threading.Thread(
+                target=self.save_uid_password, args=(user_id, email)
+            ).start()
 
         def signup_failure(req, result):
             message = result["error"]["message"]
@@ -78,7 +79,9 @@ class SignupScreen(MDScreen):
             self.dismiss_loading()
             app.encryption_class = self.encryption(self.password)
             app.root.HomeScreen.restore(user_id=user_id)
-            threading.Thread(target=self.save_uid_password, args=(user_id,email)).start()
+            threading.Thread(
+                target=self.save_uid_password, args=(user_id, email)
+            ).start()
 
         def login_failure(req, result):
             message = result["error"]["message"]
@@ -89,11 +92,11 @@ class SignupScreen(MDScreen):
         self.firebase.login_success = lambda req, result: login_success(req, result)
         self.firebase.login_failure = lambda req, result: login_failure(req, result)
         self.firebase.login(email, password)
-        
 
     def button_pressed(self, email, password, signup):
         def import_encryption():
             from libs.encryption import Encryption
+
             self.encryption = Encryption
             app.root.load_screen("HomeScreen", set_current=False)
 
@@ -103,9 +106,7 @@ class SignupScreen(MDScreen):
 
         if self.loading_view is None:
             self.loading_view = Factory.LoadingScreen()
-        self.loading_view.text = (
-            "Signing up..." if signup else "Logging in..."
-        )
+        self.loading_view.text = "Signing up..." if signup else "Logging in..."
         self.loading_view.open()
         self.loading_view.on_open = lambda *args: import_encryption()
         if signup:

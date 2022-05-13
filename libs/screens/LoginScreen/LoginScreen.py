@@ -19,17 +19,18 @@ class LoginScreen(MDScreen):
 
     def get_sync_widget(self):
         if self.sync_widget is None:
-            self.sync_widget = SyncWidget(pos_hint={"center_x":.85,"center_y":.12})
+            self.sync_widget = SyncWidget(pos_hint={"center_x": 0.85, "center_y": 0.12})
             self.add_widget(self.sync_widget)
         return self.sync_widget
 
-    def on_enter(self,*args):
+    def on_enter(self, *args):
         if app.auto_sync and not is_backup_failure():
             self.sync_widget = self.get_sync_widget()
-            app.restore(self.sync_widget, decrypt = False)
+            app.restore(self.sync_widget, decrypt=False)
 
     def login_button_pressed(self, password):
         Window.softinput_mode = "below_target"
+
         def dismiss_spinner(*args):
             app.root.load_screen("HomeScreen")
             self.loading_view.dismiss()
@@ -58,6 +59,7 @@ class LoginScreen(MDScreen):
                 toast("Invalid password")
             # print(app.encrypted_keys)
             print(f"Time taken to load passwords = {time()-i}")
+
         if not self.password:
             if self.loading_view is None:
                 self.loading_view = Factory.LoadingScreen()
