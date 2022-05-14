@@ -10,8 +10,8 @@ Passlock - A Password manager for Windows.
 
 ## Screenshots
 <p align="center">
-    <img src = "./screenshots/WelcomeScreen.png" width = 500>
-    <img src = "./screenshots/Manual.png" width = 500>
+    <img src = "./screenshots/WelcomeScreen.png">
+    <img src = "./screenshots/Manual.png">
 </p>
 
 
