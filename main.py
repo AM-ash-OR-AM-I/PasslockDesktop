@@ -28,6 +28,7 @@ from kivymd.toast import toast
 from kivymd.app import MDApp
 
 Window.size = (1100, 850)
+# TODO: Add support for chrome os
 # Window.maximize()
 
 font_file = "kivymd/fonts/Poppins-Regular.ttf"
