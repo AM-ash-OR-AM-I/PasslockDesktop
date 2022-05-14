@@ -18,7 +18,7 @@ Passlock - A Password manager for Windows.
 * Advanced finding algorithm to search for passwords easily.
 
 ## Downloads
-<a href = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/download/0.2/Passlock.msi"> Download Passlock for <img src = "screenshots/windows_logo.png" height = 20 valign = "bottom"> </a>
+<a href = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/download/0.2/Passlock.msi"> Download Passlock for <img src = "screenshots/windows_logo.png" height = 20 > </a>
 
 
 ## Screenshots
