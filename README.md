@@ -4,9 +4,10 @@
 </p>
 
 <a href = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/download/0.2/Passlock.msi"><h1 align="center">
-    Download <img src = "screenshots/pass.png" height = 25 valign = "bottom"> for <img src = "screenshots/windows_logo.png" height = 25 valign = "bottom">
+    Get <img src = "screenshots/pass.png" height = 25 valign = "bottom"> for <img src = "screenshots/windows_logo.png" height = 25 valign = "bottom">
     </h1> 
 </a>
+
 ## About
 Passlock - A Password manager for Windows.
 <p>
