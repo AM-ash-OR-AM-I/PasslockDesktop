@@ -1,17 +1,14 @@
 # Passlock for Windows
-
-This is part of Passlock Project. 
-Passlock - A Password manager for Windows.
-
 <p align = "center">
     <img src = "screenshots/pass.png" height = 150>
 </p>
 
-<h4 align="left">
+Passlock - A Password manager for Windows.
+<p>
     <a href="https://github.com/AM-ash-OR-AM-I/Passlock">
         Check out Passlock for Android
     </a>
-</h4>
+</p>
 
 ## Features
 * Backup and sync passwords across devices.
