@@ -9,7 +9,7 @@ Passlock - A Password manager for Windows.
 </h4>
 
 ## Screenshots
-<h4 align = "center"> Signup with Passlock</h4>
+<h4 align = "center"> Signup with Passlock </h4>
 <p align="center">
     <img src = "./screenshots/WelcomeScreen.png" width = 400>
     <img src = "./screenshots/Manual.png" width = 400>
@@ -21,13 +21,13 @@ Passlock - A Password manager for Windows.
     <img src = "./screenshots/FindScreen.png" width = 400>
 </p>
 
-<h4 align = "center"> Different flavours </h4>
-<p align="center">
-    <img src = "./screenshots/colors.png" width = 400>
-    <img src = "./screenshots/sync.png" width = 400>
-</p>
-
-<h4 align = "center"> Dark Mode </h4>
+<h4 align = "center"> Dark Mode & different colors </h4>
 <p align="center">
     <img src = "./screenshots/DarkMode.png" width = 400>
+    <img src = "./screenshots/colors.png" width = 400>
+</p>
+
+<h4 align = "center"> Backup & Sync </h4>
+<p align="center">
+    <img src = "./screenshots/sync.png" width = 400>
 </p>
