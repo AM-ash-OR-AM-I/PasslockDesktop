@@ -3,6 +3,11 @@
     <img src = "screenshots/pass.png" height = 150>
 </p>
 
+<a href = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/download/0.2/Passlock.msi"><h1 align="center">
+    Download <img src = "screenshots/pass.png" height = 25 valign = "bottom"> for <img src = "screenshots/windows_logo.png" height = 25 valign = "bottom">
+    </h1> 
+</a>
+## About
 Passlock - A Password manager for Windows.
 <p>
     <a href="https://github.com/AM-ash-OR-AM-I/Passlock">
@@ -16,12 +21,6 @@ Passlock - A Password manager for Windows.
 * Mimics Material v3 Monet engine, to use different color themes. (Self-made)
 * Make strong passwords through built in password generator.
 * Advanced finding algorithm to search for passwords easily.
-
-
-<a href = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/download/0.2/Passlock.msi"><h2 align="center">
-    Download <img src = "screenshots/pass.png" height = 25 valign = "bottom"> for <img src = "screenshots/windows_logo.png" height = 25 valign = "bottom">
-    </h2> 
-</a>
 
 ## Screenshots
 <h4 align = "center"> Signup with Passlock </h4>
