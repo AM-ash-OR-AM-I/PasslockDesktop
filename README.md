@@ -17,6 +17,10 @@ Passlock - A Password manager for Windows.
 * Make strong passwords through built in password generator.
 * Advanced finding algorithm to search for passwords easily.
 
+## Downloads
+<a href = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/download/0.2/Passlock.msi"> Download Passlock for <img src = "screenshots/windows_logo.png" height = 20 valign = "bottom"> </a>
+
+
 ## Screenshots
 <h4 align = "center"> Signup with Passlock </h4>
 <p align="center">
