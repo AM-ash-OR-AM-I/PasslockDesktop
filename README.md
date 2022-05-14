@@ -35,3 +35,8 @@ Passlock - A Password manager for Windows.
     <img src = "./screenshots/sync.png" width=400>
     <img src = "./screenshots/colors.png" width=400>
 </p>
+
+
+### Framework
+Uses <a href="https://github.com/kivy/kivy">Kivy,</a>
+<a href="https://github.com/kivymd/KivyMD">KivyMD</a> as frameworks.
