@@ -35,8 +35,7 @@ Builder.load_string("""
 
 
 # ---- BorderCard and PasswordCard (Child Classes of CardTextField) ----
-Builder.load_string(
-    """
+Builder.load_string("""
 #: set icon_size 40
 #: import CardTextField libs.modules.CardTextField.CardTextField
 <BorderCard@CardTextField>
@@ -229,8 +228,7 @@ class DialogButton(MDFlatButton):
 
 
 class CheckboxLabel(ThemableBehavior, RectangularRippleBehavior, MDBoxLayout):
-    Builder.load_string(
-        """
+    Builder.load_string("""
 <ButtonLabel@ButtonBehavior+MDLabel>
 <CheckboxLabel>
 	adaptive_size:True
