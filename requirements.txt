@@ -1,0 +1,2 @@
+https://github.com/AM-ash-OR-AM-I/kivy/tree/master/kivy
+pycryptodome
