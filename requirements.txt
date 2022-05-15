@@ -1,3 +1,2 @@
-https://github.com/AM-ash-OR-AM-I/kivy/archive/refs/heads/master.zip; platform_system == 'Windows'
-kivy==2.1.0; platform_system == 'Linux'
+https://github.com/AM-ash-OR-AM-I/kivy/archive/refs/heads/2.1.0_metrics_update.zip
 pycryptodome
