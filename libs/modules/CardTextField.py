@@ -1,4 +1,3 @@
-from kivy import platform
 from kivy.animation import Animation
 from kivy.core.window import Window
 from kivy.lang import Builder
@@ -123,7 +122,6 @@ class CardTextField(MDRelativeLayout, ThemableBehavior):
     icon_right_action = ListProperty(None)
     dark_bg_hex = "262626"
     icon_size = NumericProperty()
-    win = True if platform == "win" else False
     start_anim = BooleanProperty(False)
 
     app = None
