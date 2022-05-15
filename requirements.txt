@@ -1,2 +1,2 @@
-https://github.com/kivy/kivy/archive/refs/heads/master.zip
+pip install kivy
 pycryptodome
