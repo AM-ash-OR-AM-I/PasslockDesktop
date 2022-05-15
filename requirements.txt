@@ -1,2 +1,2 @@
-https://github.com/AM-ash-OR-AM-I/kivy/tree/master/kivy
+https://github.com/AM-ash-OR-AM-I/kivy/archive/refs/heads/master.zip
 pycryptodome
