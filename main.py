@@ -23,13 +23,17 @@ from kivy.properties import (
     get_color_from_hex,
     StringProperty,
 )
-
+from kivy.metrics import Metrics
 from kivymd.toast import toast
 from kivymd.app import MDApp
 
-Window.size = (1100, 850)
-# TODO: Add support for chrome os
-# Window.maximize()
+dpi = Metrics.dpi
+if dpi < 80:
+    Window.size = (770, 590)
+else:
+    Window.size = (1100, 850)
+
+# TODO: Add support for chrome os and linux
 
 font_file = "kivymd/fonts/Poppins-Regular.ttf"
 
