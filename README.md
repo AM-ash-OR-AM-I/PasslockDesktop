@@ -44,5 +44,5 @@ Passlock - A Password manager for Windows.
 
 
 ### Framework
-Uses <a href="https://github.com/kivy/kivy">Kivy,</a>
-<a href="https://github.com/kivymd/KivyMD">KivyMD</a> as frameworks.
+Uses <a href="https://github.com/kivy/kivy">Kivy as framework,</a>
+<a href="https://github.com/kivymd/KivyMD">with KivyMD library</a> .
