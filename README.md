@@ -7,7 +7,6 @@
     </h1> 
 </a>
 
-## About
 Passlock - A powerful password manager for Windows.
 <p>
     <a href="https://github.com/AM-ash-OR-AM-I/Passlock">
