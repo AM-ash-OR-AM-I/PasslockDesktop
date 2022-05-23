@@ -1,4 +1,3 @@
-# Passlock for Windows
 <p align = "center">
     <img src = "screenshots/pass.png" height = 150>
 </p>
@@ -9,7 +8,7 @@
 </a>
 
 ## About
-Passlock - A Password manager for Windows.
+Passlock - A powerful password manager for Windows.
 <p>
     <a href="https://github.com/AM-ash-OR-AM-I/Passlock">
         Check out Passlock for Android
