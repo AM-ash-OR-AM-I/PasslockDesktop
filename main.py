@@ -34,6 +34,7 @@ else:
     Window.size = (1100, 850)
 
 # TODO: Add support for chrome os and linux
+# TODO: Make updated .exe file that fixes password not deleting
 
 font_file = "kivymd/fonts/Poppins-Regular.ttf"
 
