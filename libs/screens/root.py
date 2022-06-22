@@ -24,7 +24,7 @@ class Root(ScreenManager):
         _from_goback=False,
         set_current=True,
         empty_history=False,
-        add=True
+        add=True,
     ):
         # checks that the screen already added to the screen-manager
         if not self.has_screen(screen_name):
@@ -64,7 +64,7 @@ class Root(ScreenManager):
             if platform == "android":
                 toast("Press back again to close the app", length_long=False)
             else:
-                toast("Press back again to close the app", duration=.6)
+                toast("Press back again to close the app", duration=0.5)
 
         self._press_again = time()
         if self._prev_press:

@@ -30,8 +30,12 @@ from kivymd.app import MDApp
 dpi = Metrics.dpi
 if dpi < 80:
     Window.size = (770, 590)
+    Window.minimum_height = Window.size[1]
+    Window.minimum_width = 500
 else:
     Window.size = (1100, 850)
+    Window.minimum_height = Window.size[1]
+    Window.minimum_width = 700
 
 # TODO: Add support for chrome os and linux
 # TODO: Make updated .exe file that fixes password not deleting
@@ -272,9 +276,6 @@ class MainApp(MDApp):
         )
         self.bg_color = self.bg_color_dark if self.dark_mode else self.bg_color_light
         self.primary_accent = self.dark_color if self.dark_mode else self.light_color
-        if self.entered_app:
-            self.root.HomeScreen.ids.create.ids.dark_animation.rad = 0.1
-
         if self.dark_mode:
             self.theme_cls.theme_style = "Dark"
             self.theme_cls.primary_hue = "300"

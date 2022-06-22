@@ -196,7 +196,7 @@ class FindScreen(MDScreen):
         )
 
 
-class Auto(ScrollView, MDTabsBase):
+class Auto(MDScreen, MDTabsBase):
     use_ascii = True
     use_digits = True
     use_special_chars = True
@@ -204,7 +204,7 @@ class Auto(ScrollView, MDTabsBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.initial_random = auto_password(10, True, True, True)
+        self.generated_pass = auto_password(10, True, True, True)
 
     def set_length(self, length):
         self.password_length = length
@@ -217,12 +217,13 @@ class Auto(ScrollView, MDTabsBase):
             self.use_digits = digits
         if special_chars is not None:
             self.use_special_chars = special_chars
-        self.ids.password_field.text = auto_password(
+        self.generated_pass = auto_password(
             len=self.password_length,
             ascii=self.use_ascii,
             digits=self.use_digits,
             special_chars=self.use_special_chars,
         )
+        self.ids.password_field.text = self.generated_pass
 
 
 class HomeScreen(MDScreen):
