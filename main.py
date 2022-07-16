@@ -38,6 +38,7 @@ else:
     Window.minimum_width = 700
 
 # TODO: Add support for chrome os and linux
+# TODO: Check if passwords are backed into cloud else prompt user to backup before closing app.
 
 font_file = "kivymd/fonts/Poppins-Regular.ttf"
 
