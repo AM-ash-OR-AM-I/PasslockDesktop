@@ -7,7 +7,7 @@ app = MDApp.get_running_app()
 
 
 class SaveConfig:
-    def __init__(self, *args: List[str]) -> None:
+    def __init__(self, *args: str) -> None:
         self.variable_list = args
         self.variable_dict = {}
 

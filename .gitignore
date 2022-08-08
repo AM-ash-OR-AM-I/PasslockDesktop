@@ -3,6 +3,7 @@ __pycache__
 Data
 kivymd_original
 app_build
+.idea
 
 config.json
 email.txt

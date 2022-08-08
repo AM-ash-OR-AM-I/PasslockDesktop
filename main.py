@@ -38,7 +38,7 @@ else:
     Window.minimum_width = 700
 
 # TODO: Add support for chrome os and linux
-# TODO: Check if passwords are backed into cloud else prompt user to backup before closing app.
+# TODO: Check if passwords are backed into cloud else prompt user to back up before closing app.
 
 font_file = "kivymd/fonts/Poppins-Regular.ttf"
 
@@ -206,11 +206,11 @@ class MainApp(MDApp):
         color=None,
         return_hex=False,
         lightness=0.92,
-        darkness=0,
+        darkness=0.0,
         saturation=None,
     ):
         """
-        :param hex_color:  Instead of passing color as list hexadecimal value can be passed.
+        :param hex_color:  Instead of passing color as list hexadecimal value can be passed
         :param color: Takes color like [.5,.5,.5, 1] as Parameter
         :param return_hex: Boolean value if set true the function will return hexadecimal value.
         :param lightness: Value from 0-1. If set to 1 it will return white and 0 will return original color.
