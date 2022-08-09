@@ -18,7 +18,7 @@ class SettingsScreen(MDScreen):
     content = None
     theme_picker = None
     YOUTUBE_VIDEO_LINK = "https://www.youtube.com/watch?v=EOkMDc5mZWI&list=PLUdItSprD91ybWz6uxs4zF4Gux_vzdbZh&index=1"
-    GITHUB_REPO_LINK = "https://github.com/AM-ash-OR-AM-I/Passlock"
+    GITHUB_REPO_LINK = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop"
     Builder.load_file("libs/screens/SettingsScreen/SettingsScreen.kv")
 
     def logout(self):
