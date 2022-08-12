@@ -4,7 +4,9 @@ Data
 kivymd_original
 app_build
 .idea
-
+dist
+build
+main.spec
 config.json
 email.txt
 encrypted_file.txt
