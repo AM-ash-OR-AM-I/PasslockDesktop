@@ -26,26 +26,7 @@ from kivy.properties import (
 from kivy.metrics import Metrics
 from kivymd.toast import toast
 from kivymd.app import MDApp
-from kivy.core.text import LabelBase
-fonts_path = "assets/"
-fonts = [ 
-    {
-        "name": "Poppins",
-        "fn_regular": fonts_path + "Poppins-Regular.ttf",
-        "fn_bold": fonts_path + "Poppins-Bold.ttf",
-    },
-    {
-        "name": "Poppins-Bold",
-        "fn_regular": fonts_path + "Poppins-Bold.ttf",
-    },
-    {
-        "name": "BigCircleFont",
-        "fn_regular": fonts_path + "DejavuSans.ttf",
-    },
-]
 
-for font in fonts:
-    LabelBase.register(**font)
 dpi = Metrics.dpi
 if dpi < 80:
     Window.size = (770, 590)
@@ -57,11 +38,9 @@ else:
     Window.minimum_width = 700
 
 # TODO: Add support for chrome os and linux
-# TODO: Make updated .exe file that fixes password not deleting
+# TODO: Check if passwords are backed into cloud else prompt user to back up before closing app.
 
-
-
-font_file = "assets/Poppins-Regular.ttf"
+font_file = "kivymd/fonts/Poppins-Regular.ttf"
 
 
 class MainApp(MDApp):
@@ -126,10 +105,6 @@ class MainApp(MDApp):
 
     def build(self):
         self.root = Root()
-        from libs.modules import CardTextField
-        from libs.modules import Toolbar
-        from libs.modules import List
-        
         self.theme_cls.material_style = "M3"
         self.root.load_screen("SignupScreen" if self.signup else "LoginScreen")
         if not self.signup:
@@ -231,11 +206,11 @@ class MainApp(MDApp):
         color=None,
         return_hex=False,
         lightness=0.92,
-        darkness=0,
+        darkness=0.0,
         saturation=None,
     ):
         """
-        :param hex_color:  Instead of passing color as list hexadecimal value can be passed.
+        :param hex_color:  Instead of passing color as list hexadecimal value can be passed
         :param color: Takes color like [.5,.5,.5, 1] as Parameter
         :param return_hex: Boolean value if set true the function will return hexadecimal value.
         :param lightness: Value from 0-1. If set to 1 it will return white and 0 will return original color.

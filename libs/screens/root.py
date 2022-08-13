@@ -8,6 +8,7 @@ from kivymd.toast import toast
 from kivymd.app import MDApp
 
 
+
 class Root(ScreenManager):
     _prev_press = None
     history = ListProperty()
@@ -26,12 +27,16 @@ class Root(ScreenManager):
         empty_history=False,
         add=True,
     ):
+        from libs.screens.HomeScreen.HomeScreen import HomeScreen
+        from libs.screens.LoginScreen.LoginScreen import LoginScreen
+        from libs.screens.SettingsScreen.SettingsScreen import SettingsScreen
+        from libs.screens.SignupScreen.SignupScreen import SignupScreen
         # checks that the screen already added to the screen-manager
         if not self.has_screen(screen_name):
             # loads the kv file
             Builder.load_file(f"libs/screens/{screen_name}/{screen_name}.kv")
             # imports the screen class dynamically
-            exec(f"from libs.screens.{screen_name}.{screen_name} import {screen_name}")
+            # exec(f"from libs.screens.{screen_name}.{screen_name} import {screen_name}")
             # calls the screen class to get the instance of it
             self.screen_object = eval(f"{screen_name}()")
             # automatically sets the screen name using the arg that passed in set_current
