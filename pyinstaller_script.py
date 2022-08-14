@@ -16,4 +16,4 @@ for mod in excluded_modules:
     append_string += f' --exclude-module {mod}'
 
 # Run the shell command with all the exclude module parameters
-os.system(f'pyinstaller --name Passlock --icon icon/pass_256.ico  main.py --noconfirm {append_string}')
+os.system(f'pyinstaller --name Passlock --icon icons/pass_256.ico  main.py --noconfirm {append_string}')
