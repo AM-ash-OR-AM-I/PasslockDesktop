@@ -40,19 +40,6 @@ fonts = [
         "fn_italic": fonts_path + "Roboto-BlackItalic.ttf",
     },
     {
-        "name": "Poppins",
-        "fn_regular": fonts_path + "Poppins-Regular.ttf",
-        "fn_bold": fonts_path + "Poppins-Bold.ttf",
-    },
-    {
-        "name": "Poppins-Bold",
-        "fn_regular": fonts_path + "Poppins-Bold.ttf",
-    },
-    {
-        "name": "BigCircleFont",
-        "fn_regular": fonts_path + "DejavuSans.ttf",
-    },
-    {
         "name": "Icons",
         "fn_regular": fonts_path + "materialdesignicons-webfont.ttf",
     },
