@@ -1,6 +1,5 @@
 # -*- mode: python ; coding: utf-8 -*-
 from kivy_deps import sdl2, glew
-
 from kivymd import hooks_path as kivymd_hooks_path
 
 block_cipher = None
@@ -8,9 +7,9 @@ block_cipher = None
 
 a = Analysis(
     ['main.py'],
-    pathex=["all_files\\"],
+    pathex=[],
     binaries=[],
-    datas=[],
+    datas=[("all_files/","."),("fonts/","fonts/")],
     hiddenimports=[],
     hookspath=[kivymd_hooks_path],
     hooksconfig={},
@@ -26,24 +25,22 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(
     pyz,
     a.scripts,
-    [],
     exclude_binaries=True,
-    name='Passlock',
+    name='test',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=False,
+    console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='icon\\pass_256.ico',
+    icon='icons\pass_256.ico',
 )
 coll = COLLECT(
     exe,
-    Tree("all_files\\"),
     a.binaries,
     a.zipfiles,
     a.datas,
@@ -51,5 +48,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='Passlock',
+    name='passlock',
 )

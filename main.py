@@ -27,7 +27,7 @@ from kivy.metrics import Metrics
 from kivymd.toast import toast
 from kivymd.app import MDApp
 from kivy.core.text import LabelBase
-fonts_path = "assets/"
+fonts_path = "fonts/"
 fonts = [ 
     {
         "name": "Poppins",
@@ -61,7 +61,7 @@ else:
 
 
 
-font_file = "assets/Poppins-Regular.ttf"
+font_file = "fonts/Poppins-Regular.ttf"
 
 
 class MainApp(MDApp):
