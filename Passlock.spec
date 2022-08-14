@@ -26,7 +26,7 @@ exe = EXE(
     pyz,
     a.scripts,
     exclude_binaries=True,
-    name='test',
+    name='Passlock',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
