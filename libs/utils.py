@@ -16,7 +16,6 @@ def auto_password(len: int, ascii=True, digits=True, special_chars=True) -> str:
                 string.punctuation * special_chars, 10*special_chars
             )
     if sample:
-        print(sample)
         random_pass = "".join(random.sample(sample, len))
     else:
         random_pass = ""
