@@ -1,6 +1,4 @@
 import json
-from typing import List
-
 from kivymd.app import MDApp
 
 app = MDApp.get_running_app()

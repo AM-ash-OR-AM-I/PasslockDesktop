@@ -1,4 +1,8 @@
+import os
+from libs.utils import *
+os.environ["KIVY_METRICS_DENSITY"] = get_scaling()
 import sys
+
 import threading
 from colorsys import rgb_to_hls, hls_to_rgb
 import os.path
@@ -11,7 +15,6 @@ from base64 import urlsafe_b64encode, urlsafe_b64decode
 
 from libs.screens.root import Root
 from libs.firebase import Firebase
-from libs.utils import *
 
 from kivy.core.clipboard import Clipboard
 from kivy.animation import Animation
@@ -27,8 +30,30 @@ from kivy.metrics import Metrics
 from kivymd.toast import toast
 from kivymd.app import MDApp
 from kivy.core.text import LabelBase
+from kivy import platform
+
+print("Platform = ",sys.platform)
+
+if platform == 'linux':
+    import subprocess
+    output = subprocess.Popen(
+        'xrandr | grep "\*" | cut -d" " -f4',
+        shell=True,
+        stdout=subprocess.PIPE).communicate()[0]
+    screenx = int(output.replace(b'\n', b'').split(b'x')[0])
+    screeny = int(output.replace(b'\n', b'').split(b'x')[1])
+elif platform == 'win':
+    from win32api import GetSystemMetrics
+    screenx = GetSystemMetrics(0)
+    screeny = GetSystemMetrics(1)
+else:
+    screenx = 0
+    screeny = 0
+
+# print(output.replace(b'\n',b''))
+
 fonts_path = "fonts/"
-fonts = [ 
+fonts = [
     {
         "name": "Poppins",
         "fn_regular": fonts_path + "Poppins-Regular.ttf",
@@ -48,17 +73,19 @@ for font in fonts:
     LabelBase.register(**font)
 dpi = Metrics.dpi
 if dpi < 80:
-    Window.size = (770, 590)
-    Window.minimum_height = Window.size[1]
+    size_x, size_y = 770, 590
+    Window.minimum_height = size_x
     Window.minimum_width = 500
 else:
-    Window.size = (1100, 850)
-    Window.minimum_height = Window.size[1]
+    size_x, size_y = 1100, 850
+    Window.minimum_height = size_y
     Window.minimum_width = 700
+Window.left = (screenx - size_x)/2
+Window.top = (screeny - size_y)/2
+Window.size = (size_x, size_y)
 
 # TODO: Add support for chrome os and linux
 # TODO: Make updated .exe file that fixes password not deleting
-
 
 
 font_file = "fonts/Poppins-Regular.ttf"
@@ -85,6 +112,8 @@ class MainApp(MDApp):
     sync_widget = None
     anim_sync = None
 
+    ui_scaling = 1.3
+
     passwords = {}
     encrypted_keys = {}
     screen_history = []
@@ -101,6 +130,7 @@ class MainApp(MDApp):
             "system_dark_mode",
             "backup_failure",
             "primary_palette",
+            "ui_scaling"
         )
         self.theme_cls.font_styles.update(
             {
@@ -119,6 +149,7 @@ class MainApp(MDApp):
         self.primary_palette = get_primary_palette()
         self.signup = False if os.path.exists("data/user_id.txt") else True
         self.auto_sync = check_auto_sync()
+        self.ui_scaling = get_scaling()
         Window.on_minimize = lambda: self.backup_on_pause()
         self.firebase = Firebase()
         self.set_dark_mode()
@@ -126,10 +157,7 @@ class MainApp(MDApp):
 
     def build(self):
         self.root = Root()
-        from libs.modules import CardTextField
-        from libs.modules import Toolbar
-        from libs.modules import List
-        
+        from libs.modules import CardTextField, Toolbar, List
         self.theme_cls.material_style = "M3"
         self.root.load_screen("SignupScreen" if self.signup else "LoginScreen")
         if not self.signup:
@@ -226,13 +254,13 @@ class MainApp(MDApp):
             )
 
     def generate_color(
-        self,
-        hex_color=False,
-        color=None,
-        return_hex=False,
-        lightness=0.92,
-        darkness=0,
-        saturation=None,
+            self,
+            hex_color=False,
+            color=None,
+            return_hex=False,
+            lightness=0.92,
+            darkness=0,
+            saturation=None,
     ):
         """
         :param hex_color:  Instead of passing color as list hexadecimal value can be passed.
@@ -259,9 +287,9 @@ class MainApp(MDApp):
         else:
             r, g, b = color
             _hex = (
-                hex(round(r * 255))[2:]
-                + hex(round(g * 255))[2:]
-                + hex(round(b * 255))[2:]
+                    hex(round(r * 255))[2:]
+                    + hex(round(g * 255))[2:]
+                    + hex(round(b * 255))[2:]
             )
             return _hex
 

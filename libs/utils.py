@@ -6,6 +6,7 @@ if not os.path.exists("data"):
     os.mkdir("data")
 
 
+# Doesn't always generate alphanumeric password
 def auto_password(len: int, ascii=True, digits=True, special_chars=True) -> str:
     sample = (
         string.ascii_letters * ascii
@@ -48,7 +49,7 @@ def remove_user_data() -> None:
         os.remove("data/encrypted_file.txt")
 
 
-def _get_config() -> dict:
+def __get_config() -> dict:
     if os.path.exists("data/config.json"):
         with open("data/config.json", "r") as f:
             config = json.load(f)
@@ -76,20 +77,25 @@ def get_primary_palette() -> str:
 
 
 def is_dark_mode(system=False) -> bool:
-    json_data = _get_config()
+    json_data = __get_config()
     return json_data.get("system_dark_mode" if system else "dark_mode", False)
 
 
 def is_backup_failure() -> bool:
-    _json_file = _get_config()
-    return _json_file.get("backup_failure", False)
+    json_data = __get_config()
+    return json_data.get("backup_failure", False)
 
 
 def is_extra_security() -> bool:
-    _json_file = _get_config()
-    return _json_file.get("extra_security", False)
+    json_data = __get_config()
+    return json_data.get("extra_security", False)
 
 
 def check_auto_sync() -> bool:
-    json_data = _get_config()
+    json_data = __get_config()
     return json_data.get("auto_sync", False)
+
+def get_scaling() -> str:
+    json_data = __get_config()
+    return str(json_data.get("ui_scaling", 1.5))
+    
