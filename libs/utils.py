@@ -6,7 +6,6 @@ if not os.path.exists("data"):
     os.mkdir("data")
 
 
-# Doesn't always generate alphanumeric password
 def auto_password(len: int, ascii=True, digits=True, special_chars=True) -> str:
     sample =random.sample(
         string.ascii_letters * ascii, 20*ascii
