@@ -208,7 +208,7 @@ class Auto(MDScreen, MDTabsBase):
 
     def set_length(self, length):
         self.password_length = length
-        self.generate_password(True, True, True)
+        self.generate_password()
 
     def generate_password(self, ascii=None, digits=None, special_chars=None) -> None:
         if ascii is not None:

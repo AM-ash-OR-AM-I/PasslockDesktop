@@ -8,12 +8,15 @@ if not os.path.exists("data"):
 
 # Doesn't always generate alphanumeric password
 def auto_password(len: int, ascii=True, digits=True, special_chars=True) -> str:
-    sample = (
-        string.ascii_letters * ascii
-        + string.digits * digits
-        + string.punctuation * special_chars
-    )
+    sample =random.sample(
+        string.ascii_letters * ascii, 20*ascii
+            ) + random.sample(
+                string.digits * digits, 10*digits
+            )+ random.sample(
+                string.punctuation * special_chars, 10*special_chars
+            )
     if sample:
+        print(sample)
         random_pass = "".join(random.sample(sample, len))
     else:
         random_pass = ""
