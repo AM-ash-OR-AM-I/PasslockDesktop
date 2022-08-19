@@ -12,5 +12,5 @@ class SaveConfig:
     def save_settings(self) -> None:
         for var in self.variable_list:
             exec(f"self.variable_dict['{var}']= app.{var}")
-        with open("data/config.json", "w") as file:
+        with open("./data/config.json", "w") as file:
             json.dump(self.variable_dict, file, indent=4)

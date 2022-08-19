@@ -37,12 +37,12 @@ class SignupScreen(MDScreen):
         app can still verify the password.
         """
 
-        with open("data/user_id.txt", "w") as f:
+        with open("./data/user_id.txt", "w") as f:
             f.write(uid)
-        with open("data/email.txt", "w") as f:
+        with open("./data/email.txt", "w") as f:
             f.write(email)
         app.email = email
-        with open("data/encrypted_file.txt", "w") as f:
+        with open("./data/encrypted_file.txt", "w") as f:
             f.write(app.encryption_class.encrypt("Test"))
 
     def dismiss_loading(self, *args):

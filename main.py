@@ -1,17 +1,19 @@
 #!/usr/bin/env python3
-import os
-from libs.utils import *
-os.environ["KIVY_METRICS_DENSITY"] = get_scaling()
-import sys
-import threading
-from colorsys import rgb_to_hls, hls_to_rgb
-import os.path
 
 # Can't get it to work in `encryption.py` file, while using .exe thus had to add it in main.py
 import hashlib
 from Crypto import Random
 from Crypto.Cipher import AES
 from base64 import urlsafe_b64encode, urlsafe_b64decode
+
+import os
+os.chdir(rf"{os.path.dirname(os.path.realpath(__file__))}")
+
+from libs.utils import *
+os.environ["KIVY_METRICS_DENSITY"] = get_scaling()
+
+import threading
+from colorsys import rgb_to_hls, hls_to_rgb
 
 from libs.screens.root import Root
 from libs.firebase import Firebase
@@ -49,8 +51,8 @@ else:
     screenx = 0
     screeny = 0
 
-sys.path.append(os.path.dirname(os.path.realpath(__file__)))
-fonts_path = f"{sys.path[-1]}/fonts/"
+
+fonts_path = f"./fonts/"
 fonts = [
     {
         "name": "Poppins",
@@ -85,7 +87,7 @@ Window.size = (size_x, size_y)
 # TODO: Add support for chrome os and linux
 # TODO: Make updated .exe file that fixes password not deleting
 
-font_file = f"{sys.path[-1]}/fonts/Poppins-Regular.ttf"
+font_file = f"./fonts/Poppins-Regular.ttf"
 
 
 class MainApp(MDApp):
@@ -142,7 +144,7 @@ class MainApp(MDApp):
             }
         )
         self.primary_palette = get_primary_palette()
-        self.signup = False if os.path.exists("data/user_id.txt") else True
+        self.signup = False if os.path.exists("./data/user_id.txt") else True
         self.auto_sync = check_auto_sync()
         self.ui_scaling = get_scaling()
         Window.on_minimize = lambda: self.backup_on_pause()

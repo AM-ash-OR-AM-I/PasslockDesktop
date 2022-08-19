@@ -2,8 +2,8 @@ import os.path, pickle, json
 import string
 import random
 
-if not os.path.exists("data"):
-    os.mkdir("data")
+if not os.path.exists(f"./data"):
+    os.mkdir(f"./data")
 
 
 def auto_password(len: int, ascii=True, digits=True, special_chars=True) -> str:
@@ -22,8 +22,8 @@ def auto_password(len: int, ascii=True, digits=True, special_chars=True) -> str:
 
 
 def load_passwords() -> dict:
-    if os.path.exists("data/passwords"):
-        with open("data/passwords", "rb") as f:
+    if os.path.exists("./data/passwords"):
+        with open("./data/passwords", "rb") as f:
             encrypted_pass = pickle.load(f)
         return encrypted_pass
     else:
@@ -31,28 +31,28 @@ def load_passwords() -> dict:
 
 
 def get_uid() -> str:
-    with open("data/user_id.txt", "r") as f:
+    with open("./data/user_id.txt", "r") as f:
         uid = f.read()
     return uid
 
 
 def write_passwords(dictionary: dict) -> None:
-    with open("data/passwords", "wb") as f:
+    with open("./data/passwords", "wb") as f:
         pickle.dump(dictionary, f)
 
 
 def remove_user_data() -> None:
-    if os.path.exists("data/user_id.txt"):
-        os.remove("data/user_id.txt")
-    if os.path.exists("data/passwords"):
-        os.remove("data/passwords")
-    if os.path.exists("data/encrypted_file.txt"):
-        os.remove("data/encrypted_file.txt")
+    if os.path.exists("./data/user_id.txt"):
+        os.remove("./data/user_id.txt")
+    if os.path.exists("./data/passwords"):
+        os.remove("./data/passwords")
+    if os.path.exists("./data/encrypted_file.txt"):
+        os.remove("./data/encrypted_file.txt")
 
 
 def __get_config() -> dict:
-    if os.path.exists("data/config.json"):
-        with open("data/config.json", "r") as f:
+    if os.path.exists("./data/config.json"):
+        with open("./data/config.json", "r") as f:
             config = json.load(f)
         return config
     else:
@@ -60,8 +60,8 @@ def __get_config() -> dict:
 
 
 def get_email() -> str:
-    if os.path.exists("data/email.txt"):
-        with open("data/email.txt", "r") as f:
+    if os.path.exists("./data/email.txt"):
+        with open("./data/email.txt", "r") as f:
             email = f.read()
         return email
     else:
@@ -69,8 +69,8 @@ def get_email() -> str:
 
 
 def get_primary_palette() -> str:
-    if os.path.exists("data/config.json"):
-        with open("data/config.json", "r") as f:
+    if os.path.exists("./data/config.json"):
+        with open("./data/config.json", "r") as f:
             config = json.load(f)
         return config.get("primary_palette", "DeepOrange")
     else:

@@ -41,11 +41,11 @@ class LoginScreen(MDScreen):
 
             try:
                 app.encryption_class = Encryption(password)
-                if os.path.exists("data/passwords"):
+                if os.path.exists("./data/passwords"):
                     app.passwords = app.encryption_class.load_decrypted()
                 else:
-                    if os.path.exists("data/encrypted_file.txt"):
-                        with open("data/encrypted_file.txt", "r") as f:
+                    if os.path.exists("./data/encrypted_file.txt"):
+                        with open("./data/encrypted_file.txt", "r") as f:
                             app.encryption_class.decrypt(f.read())
                     else:
                         print("'encrypted_file' not found, can't check password.")
