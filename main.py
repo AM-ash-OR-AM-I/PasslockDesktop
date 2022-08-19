@@ -49,7 +49,6 @@ else:
     screenx = 0
     screeny = 0
 
-# print(output.replace(b'\n',b''))
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 fonts_path = f"{sys.path[-1]}/fonts/"
 fonts = [
