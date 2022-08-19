@@ -6,6 +6,7 @@ from kivy.properties import ListProperty
 from kivy.uix.screenmanager import ScreenManager, CardTransition
 from kivymd.toast import toast
 from kivymd.app import MDApp
+import sys
 
 
 
@@ -34,7 +35,7 @@ class Root(ScreenManager):
         # checks that the screen already added to the screen-manager
         if not self.has_screen(screen_name):
             # loads the kv file
-            Builder.load_file(f"libs/screens/{screen_name}/{screen_name}.kv")
+            Builder.load_file(f"{sys.path[-1]}/libs/screens/{screen_name}/{screen_name}.kv")
             # imports the screen class dynamically
             # exec(f"from libs.screens.{screen_name}.{screen_name} import {screen_name}")
             # calls the screen class to get the instance of it

@@ -1,3 +1,4 @@
+import sys
 import webbrowser
 
 from kivy.core.clipboard import Clipboard
@@ -19,7 +20,7 @@ class SettingsScreen(MDScreen):
     theme_picker = None
     YOUTUBE_VIDEO_LINK = "https://www.youtube.com/watch?v=EOkMDc5mZWI&list=PLUdItSprD91ybWz6uxs4zF4Gux_vzdbZh&index=1"
     GITHUB_REPO_LINK = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop"
-    Builder.load_file("libs/screens/SettingsScreen/SettingsScreen.kv")
+    Builder.load_file(f"{sys.path[-1]}/libs/screens/SettingsScreen/SettingsScreen.kv")
 
     def logout(self):
         app.root.load_screen("SignupScreen", empty_history=True)

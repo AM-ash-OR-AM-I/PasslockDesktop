@@ -1,8 +1,8 @@
+#!/usr/bin/env python3
 import os
 from libs.utils import *
 os.environ["KIVY_METRICS_DENSITY"] = get_scaling()
 import sys
-
 import threading
 from colorsys import rgb_to_hls, hls_to_rgb
 import os.path
@@ -50,8 +50,8 @@ else:
     screeny = 0
 
 # print(output.replace(b'\n',b''))
-
-fonts_path = "fonts/"
+sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+fonts_path = f"{sys.path[-1]}/fonts/"
 fonts = [
     {
         "name": "Poppins",
@@ -86,8 +86,7 @@ Window.size = (size_x, size_y)
 # TODO: Add support for chrome os and linux
 # TODO: Make updated .exe file that fixes password not deleting
 
-
-font_file = "fonts/Poppins-Regular.ttf"
+font_file = f"{sys.path[-1]}/fonts/Poppins-Regular.ttf"
 
 
 class MainApp(MDApp):
