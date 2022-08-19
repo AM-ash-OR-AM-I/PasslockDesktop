@@ -111,8 +111,6 @@ class MainApp(MDApp):
     sync_widget = None
     anim_sync = None
 
-    ui_scaling = 1.3
-
     passwords = {}
     encrypted_keys = {}
     screen_history = []
