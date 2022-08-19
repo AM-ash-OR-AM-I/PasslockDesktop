@@ -10,9 +10,9 @@ def auto_password(len: int, ascii=True, digits=True, special_chars=True) -> str:
     sample =random.sample(
         string.ascii_letters * ascii, 20*ascii
             ) + random.sample(
-                string.digits * digits, 10*digits
+                string.digits * digits + string.digits * digits, 18*digits
             )+ random.sample(
-                string.punctuation * special_chars, 10*special_chars
+                string.punctuation * special_chars, 18*special_chars
             )
     if sample:
         random_pass = "".join(random.sample(sample, len))
