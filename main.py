@@ -32,7 +32,6 @@ from kivymd.app import MDApp
 from kivy.core.text import LabelBase
 from kivy import platform
 
-print("Platform = ",sys.platform)
 
 if platform == 'linux':
     import subprocess
