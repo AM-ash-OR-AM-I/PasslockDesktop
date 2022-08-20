@@ -53,6 +53,9 @@
 				hint_text:"e.g. username@mail.com"
                 size_hint_x:.7
 				pos_hint:{'center_x':.5}
+                focus: True
+                on_text_validate:
+                    password.focus = True
 			MDBoxLayout:
 				adaptive_height:True
 				orientation:'vertical'
@@ -63,6 +66,8 @@
                     size_hint_x:.7
 					hint_text:"Enter Password"
 					pos_hint:{'center_x':.5}
+                    on_text_validate:
+                        root.button_pressed(email.text, password.text, signup=True)
         MDBoxLayout:
             adaptive_height:True
             spacing:"20dp"

@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 # Can't get it to work in `encryption.py` file, while using .exe thus had to add it in main.py
 import hashlib
 from Crypto import Random
