@@ -26,6 +26,8 @@ After installing in linux to run app anywhere in terminal we can create a softli
 
 ```ln -s /path/to/passlock/Passlock /usr/local/bin/passlock```
 
+```chmod +x path/to/paaslock/Passlock``` can be used to make file executable if it gives error.
+
 ## Screenshots
 <h4 align = "center"> Signup with Passlock </h4>
 <p align="center">
