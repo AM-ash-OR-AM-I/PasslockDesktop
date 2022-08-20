@@ -2,8 +2,9 @@
     <img src = "screenshots/pass.png" height = 150>
 </p>
 
-<a href = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/download/0.2/Passlock.msi"><h1 align="center">
-    Get <img src = "screenshots/pass.png" height = 25 valign = "bottom"> for <img src = "screenshots/windows_logo.png" height = 25 valign = "bottom">
+<a href = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/download/0.2/Passlock.msi">
+    <h1 align="center">
+        Get <img src = "screenshots/pass.png" height = 25 valign = "bottom"> for <img src = "screenshots/windows_logo.png" height = 25 valign = "bottom">
     </h1> 
 </a>
 
@@ -20,6 +21,16 @@ Passlock - A powerful password manager for Windows.
 * Mimics Material v3 Monet engine with 🌙 Dark Mode, to use different 🎨 color themes. (Self-made)
 * Make strong passwords 🔑 through built in password generator.
 * Advanced 🔍 finding algorithm to search for passwords easily.
+
+## Installation
+<a href = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases">
+    <p><h4><b>Check out Releases and Download for linux/windows</b></h4></p>
+</a>
+
+### Additional (optional) steps for linux
+After installing in linux to run app anywhere in terminal we can create a softlink like this:
+
+```ln -s /path/to/passlock/Passlock /usr/local/bin/passlock```
 
 ## Screenshots
 <h4 align = "center"> Signup with Passlock </h4>
