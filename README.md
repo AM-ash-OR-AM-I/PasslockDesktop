@@ -30,7 +30,7 @@ After this we can run passlock by typing `$ passlock`
 ### Add menu icon
 
 ```
-$ ~/.local/share/applications
+$ cd ~/.local/share/applications
 $ nano passlock.desktop
 ```
 Paste the following lines by specifying the `/path/to/passlock`
