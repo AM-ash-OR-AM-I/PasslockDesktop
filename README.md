@@ -1,34 +1,52 @@
 <p align = "center">
-    <img src = "screenshots/pass.png" height = 150>
+    <img src = "icons/pass.png" height = 150>
 </p>
 
-<a href = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/download/0.2/Passlock.msi"><h1 align="center">Get <img src = "screenshots/pass.png" height = 25 valign = "bottom"> for <img src = "screenshots/windows_logo.png" height = 25 valign = "bottom"></h1></a>
-
-Passlock - A powerful password manager for Windows.
+Passlock for PC - A powerful cross-platform password manager.
 <p>
     <a href="https://github.com/AM-ash-OR-AM-I/Passlock">
         Check out Passlock for Android
     </a>
 </p>
 
-## Features
+# Features
 * Backup and sync passwords across devices 💻📱.
 * Encrypted passwords using AES 128bit for maximum security.
 * Mimics Material v3 Monet engine with 🌙 Dark Mode, to use different 🎨 color themes. (Self-made)
 * Make strong passwords 🔑 through built in password generator.
 * Advanced 🔍 finding algorithm to search for passwords easily.
 
-## Installation
+# Installation
 <a href = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases"><p><h4><b>Check out Releases and Download for linux/windows</b></h4></p></a>
 
-### Additional (optional) steps for linux
-After installing in linux to run app anywhere in terminal we can create a softlink like this:
+## Additional (optional) steps for linux
+After installing and extracting .tar.gz file in linux to run app anywhere in terminal we can create a softlink like this:
 
-```ln -s /path/to/passlock/Passlock /usr/local/bin/passlock```
+### Run anywhere
+```$ ln -s /path/to/passlock/Passlock /usr/local/bin/passlock```
 
-```chmod +x path/to/paaslock/Passlock``` can be used to make file executable if it gives error.
+After this we can run passlock by typing `$ passlock`
 
-## Screenshots
+### Add menu icon
+
+```
+$ ~/.local/share/applications
+$ nano passlock.desktop
+```
+Paste the following lines by specifying the `/path/to/passlock`
+```
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.3.0
+Type=Application
+Terminal=false
+Exec=/path/to/passlock/Passlock
+Name=Passlock
+Icon=/path/to/passlock/pass.png
+```
+Now app can be launched from applications menu
+
+# Screenshots
 <h4 align = "center"> Signup with Passlock </h4>
 <p align="center">
     <img src = "./screenshots/WelcomeScreen.png" width = 400>
@@ -48,6 +66,6 @@ After installing in linux to run app anywhere in terminal we can create a softli
 </p>
 
 
-### Framework
+## Framework
 Uses <a href="https://github.com/kivy/kivy">Kivy</a> as framework, along with
 <a href="https://github.com/kivymd/KivyMD">KivyMD</a> library.
