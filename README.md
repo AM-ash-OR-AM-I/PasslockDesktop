@@ -1,13 +1,8 @@
 <p align = "center">
     <img src = "icons/pass.png" height = 150>
 </p>
+<h3>Passlock (PC) - A powerful cross-platform password manager.</h3>
 
-Passlock for PC - A powerful cross-platform password manager.
-<h4>
-    <a href="https://github.com/AM-ash-OR-AM-I/Passlock">
-        Check out Passlock for Android
-    </a>
-</h4>
 
 # Features 🌟
 * Backup and sync passwords across devices 💻📱.
@@ -17,11 +12,8 @@ Passlock for PC - A powerful cross-platform password manager.
 * Advanced 🔍 finding algorithm to search for passwords easily.
 
 # Installation/Releases 🚀
-<h4>
-    <a href="https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases">
-        Check out Releases and Download for linux/windows 🧑🏻‍💻
-    </a>
-</h4>
+#### 🧑🏻‍💻<a href="https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases">Linux & Windows</a>
+#### <a href="https://github.com/AM-ash-OR-AM-I/Passlock">📱Android</a>
 
 ## Additional (optional) steps for linux 
 After installing and extracting .tar.gz file in linux to run app anywhere in terminal we can create a softlink like this:
@@ -71,5 +63,5 @@ Now app can be launched from applications menu
 
 
 # Frameworks ⚙️
-Made with 💖 using Python using <a href="https://github.com/kivy/kivy">Kivy</a> as framework, along with
+Made with 💖 in Python using <a href="https://github.com/kivy/kivy">Kivy</a> as framework, along with
 <a href="https://github.com/kivymd/KivyMD">KivyMD</a> library.
