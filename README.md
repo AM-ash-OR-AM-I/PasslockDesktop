@@ -3,23 +3,27 @@
 </p>
 
 Passlock for PC - A powerful cross-platform password manager.
-<p>
+<h4>
     <a href="https://github.com/AM-ash-OR-AM-I/Passlock">
         Check out Passlock for Android
     </a>
-</p>
+</h4>
 
-# Features
+# Features 🌟
 * Backup and sync passwords across devices 💻📱.
 * Encrypted passwords using AES 128bit for maximum security.
 * Mimics Material v3 Monet engine with 🌙 Dark Mode, to use different 🎨 color themes. (Self-made)
 * Make strong passwords 🔑 through built in password generator.
 * Advanced 🔍 finding algorithm to search for passwords easily.
 
-# Installation
-<a href = "https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases"><p><h4><b>Check out Releases and Download for linux/windows</b></h4></p></a>
+# Installation/Releases 🚀
+<h4>
+    <a href="https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases">
+        Check out Releases and Download for linux/windows 🧑🏻‍💻
+    </a>
+</h4>
 
-## Additional (optional) steps for linux
+## Additional (optional) steps for linux 
 After installing and extracting .tar.gz file in linux to run app anywhere in terminal we can create a softlink like this:
 
 ### Run anywhere
@@ -46,7 +50,7 @@ Icon=/path/to/passlock/pass.png
 ```
 Now app can be launched from applications menu
 
-# Screenshots
+# Screenshots 💻
 <h4 align = "center"> Signup with Passlock </h4>
 <p align="center">
     <img src = "./screenshots/WelcomeScreen.png" width = 400>
@@ -66,6 +70,6 @@ Now app can be launched from applications menu
 </p>
 
 
-## Framework
-Uses <a href="https://github.com/kivy/kivy">Kivy</a> as framework, along with
+# Frameworks ⚙️
+Made with 💖 using Python using <a href="https://github.com/kivy/kivy">Kivy</a> as framework, along with
 <a href="https://github.com/kivymd/KivyMD">KivyMD</a> library.
