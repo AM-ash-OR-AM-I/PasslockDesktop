@@ -15,6 +15,23 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install pyinstaller
+      - name: Build app
+        run: |
+          echo ${{secrets.WEB_API_KEY}} >> api_key.txt
+          python copy_kv_files.py
+          pyinstaller passlock_windows.spec
+          mv dist/passlock passlock/
+      - name: Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          type: 'zip'
+          directory: passlock
+          filename: passlock.zip
+      - name: Upload Release
+        uses: actions/upload-artifact@v2
+        with:
+          name: passlock
+          path: passlock.zip
 
   build-linux:
     name: Build linux app
@@ -26,13 +43,20 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install pyinstaller
-      - name: Build
+      - name: Build app
         run: |
-          pyinstaller --onefile --windowed --icon=icon.ico main.py
-          mv dist/main main
-          rm -rf build dist main.spec
-      - name: Upload
+          echo ${{secrets.WEB_API_KEY}} >> api_key.txt
+          python copy_kv_files.py
+          pyinstaller passlock_linux.spec
+          mv dist/passlock passlock/
+      - name: Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          type: 'zip'
+          directory: passlock
+          filename: passlock.zip
+      - name: Upload Release
         uses: actions/upload-artifact@v2
         with:
-          name: main
-          path: main
+          name: passlock
+          path: passlock.zip
