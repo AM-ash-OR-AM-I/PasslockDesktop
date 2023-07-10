@@ -3,21 +3,20 @@ from kivy.logger import Logger
 from libs.utils import *
 import json
 
+# Store web api key in github actions secrets, create api_key.txt file using actions
+# then use WEB_API_KEY to store the key.
+with open("api_key.txt", "r") as f:
+    WEB_API_KEY = f.readline()
+
 
 class Firebase:
-    SIGNUP_URL = (
-        "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key="
+    BASE_URL = "https://www.googleapis.com/identitytoolkit/v3/relyingparty"
+    SIGNUP_URL = f"{BASE_URL}/signupNewUser?key="
+    LOGIN_URL = f"{BASE_URL}/verifyPassword?key="
+    DELETE_URL = f"{BASE_URL}/deleteAccount?key="
+    DATABASE_URL = (
+        "https://paock-9978a-default-rtdb.asia-southeast1.firebasedatabase.app"
     )
-    LOGIN_URL = (
-        "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key="
-    )
-    DELETE_URL = (
-        "https://www.googleapis.com/identitytoolkit/v3/relyingparty/deleteAccount?key="
-    )
-
-    WEB_API_KEY = "AIzaSyB0-Xy5Ar7JL_Rlg1PeO4CLKkaVbjM71TQ"  # Use your API key, for your own project.
-
-    DATABASE_URL = "https://paock-9978a-default-rtdb.asia-southeast1.firebasedatabase.app"  # Use your database URL, for your own project.
 
     def signup_success(self, req, result):
         """
@@ -35,7 +34,7 @@ class Firebase:
         """
         Used to signup the user.
         """
-        url = self.SIGNUP_URL + self.WEB_API_KEY
+        url = self.SIGNUP_URL + WEB_API_KEY
         data = json.dumps(
             {"email": name, "password": password, "returnSecureToken": True}
         )
@@ -64,7 +63,7 @@ class Firebase:
         Used to login the user.
         """
 
-        url = self.LOGIN_URL + self.WEB_API_KEY
+        url = self.LOGIN_URL + WEB_API_KEY
         data = json.dumps(
             {"email": name, "password": password, "returnSecureToken": True}
         )

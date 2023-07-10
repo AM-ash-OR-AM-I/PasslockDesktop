@@ -1,0 +1,38 @@
+name: Build desktop app
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-windows:
+    name: Build windows app
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+  build-linux:
+    name: Build linux app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pyinstaller
+      - name: Build
+        run: |
+          pyinstaller --onefile --windowed --icon=icon.ico main.py
+          mv dist/main main
+          rm -rf build dist main.spec
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: main
+          path: main

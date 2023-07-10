@@ -6,19 +6,29 @@ if not os.path.exists(f"./data"):
     os.mkdir(f"./data")
 
 
-def auto_password(len: int, ascii=True, digits=True, special_chars=True) -> str:
-    sample =random.sample(
-        string.ascii_letters * ascii, 20*ascii
-            ) + random.sample(
-                string.digits * digits + string.digits * digits, 18*digits
-            )+ random.sample(
-                string.punctuation * special_chars, 18*special_chars
-            )
-    if sample:
-        random_pass = "".join(random.sample(sample, len))
-    else:
-        random_pass = ""
-    return random_pass
+def auto_password(length: int, ascii=True, digits=True, special_chars=True) -> str:
+    universe = ""
+    password = ""
+    if ascii:
+        password += random.choice(string.ascii_letters)
+        universe += string.ascii_letters
+    if digits:
+        universe += string.digits
+        password += random.choice(string.digits)
+    if special_chars:
+        universe += string.punctuation
+        password += random.choice(string.punctuation)
+
+    rest = length - len(password)
+    if universe == "":  # if all options are false
+        return "Error: No options selected"
+    for _ in range(rest):
+        password += random.choice(universe)
+
+    password = list(password)
+    random.shuffle(password)
+    password = "".join(password)
+    return password
 
 
 def load_passwords() -> dict:
