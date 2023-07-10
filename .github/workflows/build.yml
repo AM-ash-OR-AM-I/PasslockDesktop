@@ -17,6 +17,7 @@ jobs:
           pip install pyinstaller
       - name: Build app
         run: |
+          cd ${{github.workspace}}
           echo ${{secrets.WEB_API_KEY}} >> api_key.txt
           python copy_kv_files.py
           pyinstaller passlock_windows.spec
@@ -45,6 +46,7 @@ jobs:
           pip install pyinstaller
       - name: Build app
         run: |
+          cd ${{github.workspace}}
           echo ${{secrets.WEB_API_KEY}} >> api_key.txt
           python copy_kv_files.py
           pyinstaller passlock_linux.spec
