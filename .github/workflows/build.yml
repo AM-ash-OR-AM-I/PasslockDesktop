@@ -11,22 +11,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install pyinstaller
-      - name: Build app
+      - name: Copy files
         run: |
           cd ${{github.workspace}}
           echo ${{secrets.WEB_API_KEY}} >> api_key.txt
           python copy_kv_files.py
-          pyinstaller passlock_windows.spec
-          mv dist/passlock passlock/
+      - name: Build app
+        uses: JackMcKew/pyinstaller-action-windows@main
+        with:
+          path: .
+          spec: passlock_windows.spec
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          directory: passlock
+          directory: dist/passlock/
           filename: passlock.zip
       - name: Upload Release
         uses: actions/upload-artifact@v2
@@ -42,6 +41,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Install dependencies
         run: |
+          apt-get install libmtdev1
           pip install -r requirements.txt
           pip install pyinstaller
       - name: Build app
