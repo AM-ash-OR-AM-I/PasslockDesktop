@@ -1,8 +1,10 @@
+# BUG: Does not work due to lack of OpenGL support on GitHub Actions
+# Not using this workflow for now
 name: Build desktop app
 on:
   push:
     branches:
-      - master
+      - None
 
 jobs:
   build-windows:
@@ -13,8 +15,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-          pip install pyinstaller
+          pip install -r requirements.txt pyinstaller
       - name: Build app
         run: |
           cd ${{github.workspace}}

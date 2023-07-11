@@ -17,3 +17,5 @@ user_id.txt
 passlock.tar.gz
 passlock
 api_key.txt
+env
+set_web_api_key.py

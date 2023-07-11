@@ -1,8 +1,5 @@
-# Can't get it to work in `encryption.py` file, while using .exe thus had to add it in main.py
-import hashlib
-from Crypto import Random
-from Crypto.Cipher import AES
-from base64 import urlsafe_b64encode, urlsafe_b64decode
+# Used for hidden imports
+import initialize_imports
 
 import os
 os.chdir(rf"{os.path.dirname(os.path.realpath(__file__))}")
@@ -81,9 +78,6 @@ else:
 Window.left = (screenx - size_x)/2
 Window.top = (screeny - size_y)/2
 Window.size = (size_x, size_y)
-
-# TODO: Add support for chrome os and linux
-# TODO: Make updated .exe file that fixes password not deleting
 
 font_file = f"./fonts/Poppins-Regular.ttf"
 

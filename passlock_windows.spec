@@ -1,4 +1,5 @@
 # -*- mode: python ; coding: utf-8 -*-
+from kivymd import hooks_path as kivymd_hooks_path
 from kivy_deps import sdl2, glew
 
 block_cipher = None
@@ -8,9 +9,10 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[("all_files/","."),("fonts/","fonts/"),("icons/pass.png","."), ("api_key.txt",".")],
+    datas=[("all_files/","."),("fonts/","fonts/"),("icons/pass.png",".")],
     hiddenimports=[],
-    hookspath=[],
+    hookspath=[kivymd_hooks_path],
+    hooksconfig={},
     runtime_hooks=[],
     excludes=['numpy', 'jedi', 'psutil', 'tk', 'ipython', 'tcl', 'tcl8', 'tornado', 'cv2','mfc140u.dll'],
     win_no_prefer_redirects=False,

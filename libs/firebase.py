@@ -1,13 +1,9 @@
 from kivy.network.urlrequest import UrlRequest
 from kivy.logger import Logger
 from libs.utils import *
-import json
+import json, os
 
-# Store web api key in github actions secrets, create api_key.txt file using actions
-# then use WEB_API_KEY to store the key.
-with open("api_key.txt", "r") as f:
-    WEB_API_KEY = f.readline()
-
+WEB_API_KEY = os.environ["WEB_API_KEY"]
 
 class Firebase:
     BASE_URL = "https://www.googleapis.com/identitytoolkit/v3/relyingparty"
