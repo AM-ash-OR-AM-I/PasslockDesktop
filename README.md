@@ -49,11 +49,8 @@ Now app can be launched from applications menu
 </details>
 
 
-
-
 ## Installation 📥
 - Run the following command in terminal to install dependencies in a virtual environment.
-
 ```sh
 pip install --updgrade pip
 python -m venv env
@@ -68,14 +65,27 @@ python -m pip install -r requirements.txt
 import os
 os.environ["WEB_API_KEY"] = "[YOUR WEB API KEY HERE]" # Find web api key in firebase project settings
 ```
-- Run the app using `python main.py`
+- To sanity check if everything is working fine, run `python main.py` and see if the app runs.
+- Also you can run `pip list` to see if only the packages in `requirements.txt` are installed.
 
 ## Packaging 📦
+#### PyInstaller (Windows & Linux)
 - Run `copy_kv_files.py` to copy kv files to `all_files` folder that will be used by PyInstaller.
+- Make sure environment is activated if not run `env\Scripts\activate`.
 - Pyinstaller command to package app:
-    - Windows `python -m PyInstaller passlock_windows.spec`
-    - Linux `python -m PyInstaller passlock_linux.spec`
+    - Windows `pyinstaller passlock_windows.spec --noconfirm`
+    - Linux `pyinstaller passlock_linux.spec --noconfirm`
 - Output will be in `dist/passlock` folder.
+
+##### Advanced Installer (Windows only MSI Build)
+- Download and install <a href="https://www.advancedinstaller.com/downloads.html">Advanced Installer</a>.
+- Check to see if path is correct for advanced installer in `make_msi_build.bat` file.
+- Run `make_msi_build.bat` to make MSI installer.
+- Output will be in `Passlock-SetupFiles` folder.
+- Run `Passlock-SetupFiles\Passlock.msi` to install and run app.
+
+##### Linux tar.gz build
+- Docs coming soon... (For now you can use PyInstaller and make a tar.gz file manually)
 
 ## Screenshots 💻
 <h4 align = "center"> Signup with Passlock </h4>
