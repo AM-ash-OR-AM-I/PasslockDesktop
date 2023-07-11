@@ -11,7 +11,6 @@ a = Analysis(
     datas=[("all_files/","."),("fonts/","fonts/"),("icons/pass.png","."), ("api_key.txt",".")],
     hiddenimports=[],
     hookspath=[],
-    hooksconfig={},
     runtime_hooks=[],
     excludes=['numpy', 'jedi', 'psutil', 'tk', 'ipython', 'tcl', 'tcl8', 'tornado', 'cv2','mfc140u.dll'],
     win_no_prefer_redirects=False,

@@ -1,18 +1,19 @@
 name: Build desktop app
+
 on:
   push:
-    branches:
-      - master
+    branches: none
 
 jobs:
-  build-windows:
-    name: Build windows app
-    runs-on: windows-latest
+  build-linux:
+    name: Build linux app
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install dependencies
         run: |
+          apt-get install libmtdev1
           pip install -r requirements.txt
           pip install pyinstaller
       - name: Build app
@@ -20,7 +21,7 @@ jobs:
           cd ${{github.workspace}}
           echo ${{secrets.WEB_API_KEY}} >> api_key.txt
           python copy_kv_files.py
-          pyinstaller passlock_windows.spec
+          pyinstaller passlock_linux.spec
           mv dist/passlock passlock/
       - name: Archive Release
         uses: thedoctor0/zip-release@master
