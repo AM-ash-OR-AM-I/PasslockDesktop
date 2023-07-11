@@ -6,7 +6,7 @@ if not os.path.exists(f"./data"):
     os.mkdir(f"./data")
 
 
-def auto_password(length: int, ascii=True, digits=True, special_chars=True) -> str:
+def auto_password(length: int, ascii:bool =True, digits: bool=True, special_chars: bool=True) -> str:
     universe = ""
     password = ""
     if ascii:

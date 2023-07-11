@@ -19,3 +19,5 @@ passlock
 api_key.txt
 env
 set_web_api_key.py
+Passlock-cache
+Passlock-SetupFiles

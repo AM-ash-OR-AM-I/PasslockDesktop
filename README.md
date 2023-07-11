@@ -26,13 +26,14 @@ After this we can run passlock by typing `$ passlock`
 
 </details>
 <details>
-<summary><h4>Add menu icon</h4></summary>
+<summary><h4>Adding menu icon</h4></summary>
 Hello there, if you are using linux and want to add passlock to applications menu then follow these steps:
-```
+
+```bash
 $ cd ~/.local/share/applications
 $ nano passlock.desktop
 ```
-Paste the following lines by specifying the `/path/to/passlock
+Paste the following lines by specifying the `/path/to/passlock` in `Exec` and `Icon` fields
 
 ```ini
 [Desktop Entry]
@@ -55,14 +56,13 @@ Now app can be launched from applications menu
 
 ```sh
 pip install --updgrade pip
-pip install virtualenv
-python -m virtualenv env
+python -m venv env
 env\Scripts\activate
-python -m install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 - Copy kivymd folder to `env\Lib\site-packages\kivymd`
-    - Windows: `copy kivymd env\Lib\site-packages\kivymd`
-    - Linux: `cp kivymd env\Lib\site-packages\kivymd`
+    - Windows: `xcopy kivymd\* env\Lib\site-packages\kivymd\ /E`
+    - Linux: `cp kivymd/* env/Lib/site-packages/kivymd/`
 - Make a file named `set_web_api_key.py` with the following content:
 ```py
 import os
