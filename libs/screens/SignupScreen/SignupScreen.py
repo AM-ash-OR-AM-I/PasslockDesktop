@@ -1,10 +1,7 @@
-from email import message
-from typing import Dict
 from kivymd.app import MDApp
 from kivymd.toast import toast
 from kivymd.uix.screen import MDScreen
 import threading
-from time import time
 from kivy.properties import BooleanProperty
 from kivy.factory import Factory
 
