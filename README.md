@@ -71,6 +71,7 @@ os.environ["WEB_API_KEY"] = "[YOUR WEB API KEY HERE]" # Find web api key in fire
 ## Packaging 📦
 #### PyInstaller (Windows & Linux)
 - Run `copy_kv_files.py` to copy kv files to `all_files` folder that will be used by PyInstaller.
+    - NOTE: Do this every time you make changes to kv files.
 - Make sure environment is activated if not run `env\Scripts\activate`.
 - Pyinstaller command to package app:
     - Windows `pyinstaller passlock_windows.spec --noconfirm`
