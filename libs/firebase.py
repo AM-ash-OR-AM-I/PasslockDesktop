@@ -4,15 +4,13 @@ from libs.utils import *
 import json, os
 
 WEB_API_KEY = os.environ["WEB_API_KEY"]
+DATABASE_URL = os.environ["DATABASE_URL"]
 
 class Firebase:
     BASE_URL = "https://www.googleapis.com/identitytoolkit/v3/relyingparty"
     SIGNUP_URL = f"{BASE_URL}/signupNewUser?key="
     LOGIN_URL = f"{BASE_URL}/verifyPassword?key="
     DELETE_URL = f"{BASE_URL}/deleteAccount?key="
-    DATABASE_URL = (
-        "https://paock-9978a-default-rtdb.asia-southeast1.firebasedatabase.app"
-    )
 
     def signup_success(self, req, result):
         """
@@ -91,7 +89,7 @@ class Firebase:
         _json = {}
         _json[get_uid()] = result
         UrlRequest(
-            self.DATABASE_URL + "/.json",
+            f"{DATABASE_URL}/.json",
             req_body=json.dumps(_json),
             req_headers={"Content-type": "application/json", "Accept": "text/plain"},
             on_success=self.backup_success,
@@ -120,7 +118,7 @@ class Firebase:
             user_id = get_uid()
 
         UrlRequest(
-            f"{self.DATABASE_URL}/{user_id}.json",
+            f"{DATABASE_URL}/{user_id}.json",
             on_success=self.restore_success,
             on_failure=self.restore_failure,
             on_error=self.restore_failure,

@@ -6,4 +6,4 @@ from Crypto.Cipher import AES
 from base64 import urlsafe_b64encode, urlsafe_b64decode
 
 # Set the web api key in the environment variable
-import set_web_api_key
+import libs.firebase_config as firebase_config

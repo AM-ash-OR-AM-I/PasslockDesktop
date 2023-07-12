@@ -1,5 +1,5 @@
 # Used for hidden imports
-import initialize_imports
+import libs.initialize_imports
 
 import os
 os.chdir(rf"{os.path.dirname(os.path.realpath(__file__))}")

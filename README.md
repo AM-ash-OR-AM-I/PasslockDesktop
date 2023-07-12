@@ -52,7 +52,7 @@ Now app can be launched from applications menu
 ## Installation 📥
 - Run the following command in terminal to install dependencies in a virtual environment.
 ```sh
-pip install --updgrade pip
+pip install --upgrade pip
 python -m venv env
 env\Scripts\activate
 python -m pip install -r requirements.txt
@@ -60,19 +60,27 @@ python -m pip install -r requirements.txt
 - Copy kivymd folder to `env\Lib\site-packages\kivymd`
     - Windows: `xcopy kivymd\* env\Lib\site-packages\kivymd\ /E`
     - Linux: `cp kivymd/* env/Lib/site-packages/kivymd/`
-- Make a file named `set_web_api_key.py` with the following content:
+- Make a file named `libs\firebase_config.py` with the following content:
 ```py
 import os
 os.environ["WEB_API_KEY"] = "[YOUR WEB API KEY HERE]" # Find web api key in firebase project settings
+os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in firebase project settings
 ```
 - To sanity check if everything is working fine, run `python main.py` and see if the app runs.
 - Also you can run `pip list` to see if only the packages in `requirements.txt` are installed.
 
 ## Packaging 📦
+### Automated 🤖
+- Run `build_windows.bat` to make windows build, optionally you can set version number by passing it as argument.
+    - Example: `build_windows.bat 1.3.0`
+    - This will first make .exe file using PyInstaller and then make MSI installer inside `Passlock-SetupFiles` folder.
+- Coming soon for linux.
+
+### Manually 🧑🏻‍💻 (In case automated build fails)
 #### PyInstaller (Windows & Linux)
 - Run `copy_kv_files.py` to copy kv files to `all_files` folder that will be used by PyInstaller.
     - NOTE: Do this every time you make changes to kv files.
-- Make sure environment is activated if not run `env\Scripts\activate`.
+- Make sure environment is activated if not run `env\Scripts\activate` or `source env/bin/activate` for linux.
 - Pyinstaller command to package app:
     - Windows `pyinstaller passlock_windows.spec --noconfirm`
     - Linux `pyinstaller passlock_linux.spec --noconfirm`
@@ -84,6 +92,7 @@ os.environ["WEB_API_KEY"] = "[YOUR WEB API KEY HERE]" # Find web api key in fire
 - Run `make_msi_build.bat` to make MSI installer.
 - Output will be in `Passlock-SetupFiles` folder.
 - Run `Passlock-SetupFiles\Passlock.msi` to install and run app.
+    - NOTE: While installing you should not install in `Program Files` or `Program Files (x86)` folder as it will not have write permissions and app will not be able to create database file. Install in `C:\Passlock` or `D:\Passlock` or any other drive.
 
 ##### Linux tar.gz build
 - Docs coming soon... (For now you can use PyInstaller and make a tar.gz file manually)
