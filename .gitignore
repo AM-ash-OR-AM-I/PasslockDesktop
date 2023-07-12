@@ -22,3 +22,4 @@ set_web_api_key.py
 Passlock-cache
 Passlock-SetupFiles
 Passlock.aip
+libs/firebase_config.py
