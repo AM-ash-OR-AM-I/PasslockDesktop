@@ -5,9 +5,9 @@
 
 
 ## Features 🌟
-* Backup and sync passwords across devices 💻📱.
-* Encrypted passwords using AES 128bit for maximum security.
-* Mimics Material v3 Monet engine with 🌙 Dark Mode, to use different 🎨 color themes. (Self-made)
+* Backup and auto-sync ☁️ passwords across devices 💻📱
+* Encrypted 🔐 passwords using AES 128bit for maximum security.
+* Mimics Material v3 Monet engine with 🌙 Dark Mode, to use different 🎨 color themes.
 * Make strong passwords 🔑 through built in password generator.
 * Advanced 🔍 finding algorithm to search for passwords easily.
 
