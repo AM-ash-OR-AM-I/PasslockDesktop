@@ -27,8 +27,6 @@ After this we can run passlock by typing `$ passlock`
 </details>
 <details>
 <summary>Adding menu icon</summary>
-If you are using linux and want to add passlock to applications menu then follow these steps:
-
 ```bash
 $ cd ~/.local/share/applications
 $ nano passlock.desktop
