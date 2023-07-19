@@ -17,7 +17,7 @@
 
 ### Additional (optional) steps for linux 
 <details>
-<summary><h4>Creating a soft link</h4></summary>
+<summary>Creating a soft link</summary>
 After installing and extracting .tar.gz file in linux to run app anywhere in terminal we can create a softlink like this:
 
 ```$ ln -s /path/to/passlock/Passlock /usr/local/bin/passlock```
@@ -26,7 +26,7 @@ After this we can run passlock by typing `$ passlock`
 
 </details>
 <details>
-<summary><h4>Adding menu icon</h4></summary>
+<summary>Adding menu icon</summary>
 Hello there, if you are using linux and want to add passlock to applications menu then follow these steps:
 
 ```bash
