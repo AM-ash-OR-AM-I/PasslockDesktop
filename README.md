@@ -27,6 +27,7 @@ After this we can run passlock by typing `$ passlock`
 </details>
 <details>
 <summary>Adding menu icon</summary>
+    
 ```bash
 $ cd ~/.local/share/applications
 $ nano passlock.desktop
