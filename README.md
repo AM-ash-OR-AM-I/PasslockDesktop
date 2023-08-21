@@ -15,6 +15,10 @@
 #### 🧑🏻‍💻<a href="https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases">Linux & Windows</a>
 #### <a href="https://github.com/AM-ash-OR-AM-I/Passlock">📱Android</a>
 
+## Issues 
+- In linux you may face issues with app not starting, it's likely if `xrandr` isn't installed.
+    - Install `xrandr` by `$ sudo dnf xrandr` in fedora or `$ sudo apt xrandr` in ubuntu
+
 ### Additional (optional) steps for linux 
 <details>
 <summary>Creating a soft link</summary>
