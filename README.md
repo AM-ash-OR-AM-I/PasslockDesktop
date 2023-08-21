@@ -33,8 +33,8 @@ After this we can run passlock by typing `$ passlock`
 <summary>Adding menu icon</summary>
     
 ```bash
-$ cd ~/.local/share/applications
-$ nano passlock.desktop
+cd ~/.local/share/applications
+nano passlock.desktop
 ```
 Paste the following lines by specifying the `/path/to/passlock` in `Exec` and `Icon` fields
 
