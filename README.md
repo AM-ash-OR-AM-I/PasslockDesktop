@@ -12,14 +12,20 @@
 * Advanced 🔍 finding algorithm to search for passwords easily.
 
 ## Releases 🚀
-#### 🧑🏻‍💻<a href="https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases">Linux & Windows</a>
-#### <a href="https://github.com/AM-ash-OR-AM-I/Passlock">📱Android</a>
+See all releases for Windows 🪟 and Linux 🐧 [here.](https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/)
 
 ## Issues 
 - In linux you may face issues with app not starting, it's likely if `xrandr` isn't installed.
     - Install `xrandr` by `$ sudo dnf xrandr` in fedora or `$ sudo apt xrandr` in ubuntu
 
-### Additional (optional) steps for linux 
+### Additional steps for linux 
+#### Automated 🤖
+- Extract files to dir using `tar -xzvf passlock.tar.gz -C <output_path>`
+- `cd passlock` & Just run `./install.sh` inside the passlock folder
+  - This will add a menu item and make passlock accessible through terminal anywhere
+  - try `$ passlock` or run from menu.
+
+#### Manual
 <details>
 <summary>Creating a soft link</summary>
 After installing and extracting .tar.gz file in linux to run app anywhere in terminal we can create a softlink like this:

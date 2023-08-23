@@ -7,7 +7,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[("all_files/","."),("fonts/","fonts/"),("icons/pass.png",".")],
+    datas=[("all_files/","."),("fonts/","fonts/"),("icons/pass.png","."),("install.sh",".")],
     hiddenimports=[],
     hookspath=[kivymd_hooks_path],
     hooksconfig={},
