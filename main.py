@@ -1,13 +1,15 @@
 # Used for hidden imports
 import libs.initialize_imports
 
+import threading
 import os
+
 os.chdir(rf"{os.path.dirname(os.path.realpath(__file__))}")
 
 from libs.utils import *
+
 os.environ["KIVY_METRICS_DENSITY"] = get_scaling()
 
-import threading
 from colorsys import rgb_to_hls, hls_to_rgb
 
 from libs.screens.root import Root
@@ -29,9 +31,9 @@ from kivymd.app import MDApp
 from kivy.core.text import LabelBase
 from kivy import platform
 
-
 if platform == 'linux':
     import subprocess
+
     output = subprocess.Popen(
         'xrandr | grep "\*" | cut -d" " -f4',
         shell=True,
@@ -40,12 +42,12 @@ if platform == 'linux':
     screeny = int(output.replace(b'\n', b'').split(b'x')[1])
 elif platform == 'win':
     from win32api import GetSystemMetrics
+
     screenx = GetSystemMetrics(0)
     screeny = GetSystemMetrics(1)
 else:
     screenx = 0
     screeny = 0
-
 
 fonts_path = f"./fonts/"
 fonts = [
@@ -75,8 +77,8 @@ else:
     size_x, size_y = 1100, 850
     Window.minimum_height = size_y
     Window.minimum_width = 700
-Window.left = (screenx - size_x)/2
-Window.top = (screeny - size_y)/2
+Window.left = (screenx - size_x) / 2
+Window.top = (screeny - size_y) / 2
 Window.size = (size_x, size_y)
 
 font_file = f"./fonts/Poppins-Regular.ttf"
@@ -248,7 +250,7 @@ class MainApp(MDApp):
             color=None,
             return_hex=False,
             lightness=0.92,
-            darkness=0,
+            darkness=0.0,
             saturation=None,
     ):
         """

@@ -1,4 +1,6 @@
-kivy==2.1.0
+kivy==2.1.0; platform_system == "Windows"
+kivy; platform_system == "Linux"
 pycryptodome
 pillow
-pyinstaller==5.0.1
+pyinstaller==5.0.1; platform_system == "Windows"
+pyinstaller; platform_system=="Linux"

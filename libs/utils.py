@@ -1,17 +1,19 @@
-import os.path, pickle, json
-import string
+import json
+import os.path
+import pickle
 import random
+import string
 
 if not os.path.exists(f"./data"):
     os.mkdir(f"./data")
 
 
-def auto_password(length: int, ascii:bool =True, digits: bool=True, special_chars: bool=True) -> str:
+def auto_password(length: int, letters: bool = True, digits: bool = True, special_chars: bool = True) -> str:
     universe = ""
     password = ""
-    if ascii:
-        password += random.choice(string.ascii_letters)
+    if letters:
         universe += string.ascii_letters
+        password += random.choice(string.ascii_letters)
     if digits:
         universe += string.digits
         password += random.choice(string.digits)
@@ -106,7 +108,7 @@ def check_auto_sync() -> bool:
     json_data = __get_config()
     return json_data.get("auto_sync", False)
 
+
 def get_scaling() -> str:
     json_data = __get_config()
     return str(json_data.get("ui_scaling", 1.5))
-    

@@ -219,7 +219,7 @@ class Auto(MDScreen, MDTabsBase):
             self.use_special_chars = special_chars
         self.generated_pass = auto_password(
             length=self.password_length,
-            ascii=self.use_ascii,
+            letters=self.use_ascii,
             digits=self.use_digits,
             special_chars=self.use_special_chars,
         )

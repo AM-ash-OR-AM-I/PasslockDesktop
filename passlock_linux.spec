@@ -1,5 +1,5 @@
 # -*- mode: python ; coding: utf-8 -*-
-
+from kivymd import hooks_path as kivymd_hooks_path
 block_cipher = None
 
 
@@ -9,7 +9,7 @@ a = Analysis(
     binaries=[],
     datas=[("all_files/","."),("fonts/","fonts/"),("icons/pass.png",".")],
     hiddenimports=[],
-    hookspath=[],
+    hookspath=[kivymd_hooks_path],
     hooksconfig={},
     runtime_hooks=[],
     excludes=['numpy', 'jedi', 'psutil', 'tk', 'ipython', 'tcl', 'tcl8', 'tornado', 'cv2'],

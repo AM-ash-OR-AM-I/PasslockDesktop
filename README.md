@@ -1,8 +1,8 @@
 <p align = "center">
     <img src = "icons/pass.png" height = 150>
 </p>
-<h3>Passlock (PC) - A powerful cross-platform password manager.</h3>
 
+### Passlock (PC) - A powerful cross-platform password manager
 
 ## Features 🌟
 * Backup and auto-sync ☁️ passwords across devices 💻📱
@@ -60,9 +60,9 @@ python -m venv env
 env\Scripts\activate
 python -m pip install -r requirements.txt
 ```
-- Copy kivymd folder to `env\Lib\site-packages\kivymd`
+- Copy kivymd folder to site-packages
     - Windows: `xcopy kivymd\* env\Lib\site-packages\kivymd\ /E`
-    - Linux: `cp kivymd/* env/Lib/site-packages/kivymd/`
+    - Linux: `cp -r kivymd/ .</path/to/site-packages>/kivymd/`
 - Make a file named `libs\firebase_config.py` with the following content:
 ```py
 import os
@@ -101,23 +101,14 @@ os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in f
 - Docs coming soon... (For now you can use PyInstaller and make a tar.gz file manually)
 
 ## Screenshots 💻
-<h4 align = "center"> Signup with Passlock </h4>
-<p align="center">
-    <img src = "./screenshots/WelcomeScreen.png" width = 400>
-    <img src = "./screenshots/Manual.png" width = 400>
-</p>
 
-<h4 align = "center"> Create Strong Passwords </h4>
-<p align="center">
-    <img src = "./screenshots/DarkMode.png" width = 400>
-    <img src = "./screenshots/FindScreen.png" width = 400>
-</p>
-
-<h4 align = "center"> Backup and Sync </h4>
-<p align="center">
-    <img src = "./screenshots/sync.png" width=400>
-    <img src = "./screenshots/colors.png" width=400>
-</p>
+| Welcome                              | Home                              |
+|--------------------------------------|-----------------------------------|
+| ![](./screenshots/WelcomeScreen.png) | ![](./screenshots/HomeScreen.png) |
+| Create Strong Passwords              | Find                              |
+| ![](./screenshots/DarkMode.png)      | ![](./screenshots/FindScreen.png) |
+| Backup and Sync                      | Choose Different Colors           |
+| ![](./screenshots/sync.png)          | ![](./screenshots/colors.png)     |
 
 
 ## Frameworks ⚙️

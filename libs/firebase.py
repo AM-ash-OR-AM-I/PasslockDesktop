@@ -1,10 +1,11 @@
-from kivy.network.urlrequest import UrlRequest
 from kivy.logger import Logger
+from kivy.network.urlrequest import UrlRequest
+
 from libs.utils import *
-import json, os
 
 WEB_API_KEY = os.environ["WEB_API_KEY"]
 DATABASE_URL = os.environ["DATABASE_URL"]
+
 
 class Firebase:
     BASE_URL = "https://www.googleapis.com/identitytoolkit/v3/relyingparty"
@@ -86,8 +87,7 @@ class Firebase:
         Used to backup the user's passwords.
         """
         result = load_passwords()
-        _json = {}
-        _json[get_uid()] = result
+        _json = {get_uid(): result}
         UrlRequest(
             f"{DATABASE_URL}/.json",
             req_body=json.dumps(_json),
