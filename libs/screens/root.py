@@ -8,7 +8,6 @@ from kivymd.toast import toast
 from kivymd.app import MDApp
 
 
-
 class Root(ScreenManager):
     _prev_press = None
     history = ListProperty()
@@ -19,13 +18,13 @@ class Root(ScreenManager):
         # self.transition = CardTransition(duration=0.3)
 
     def load_screen(
-        self,
-        screen_name,
-        side="left",
-        _from_goback=False,
-        set_current=True,
-        empty_history=False,
-        add=True,
+            self,
+            screen_name,
+            side="left",
+            _from_goback=False,
+            set_current=True,
+            empty_history=False,
+            add=True,
     ):
         from libs.screens.HomeScreen.HomeScreen import HomeScreen
         from libs.screens.LoginScreen.LoginScreen import LoginScreen
@@ -84,8 +83,8 @@ class Root(ScreenManager):
     def _handle_keyboard(self, instance, key, *args):
         if key == 27:
             if (
-                self.current == "HomeScreen"
-                and self.current_screen.ids.tab_manager.current == "FindScreen"
+                    self.current == "HomeScreen"
+                    and self.current_screen.ids.tab_manager.current == "FindScreen"
             ):
                 self.current_screen.ids.tab_manager.current = "CreateScreen"
             elif self.current == "SettingsScreen":

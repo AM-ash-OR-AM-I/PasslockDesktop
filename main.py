@@ -96,7 +96,6 @@ class MainApp(MDApp):
 
     password_changed = False
     system_dark_mode = False
-    auto_sync = False
     backup_failure = False
 
     encryption_class = None

@@ -106,7 +106,7 @@ def is_extra_security() -> bool:
 
 def check_auto_sync() -> bool:
     json_data = __get_config()
-    return json_data.get("auto_sync", False)
+    return json_data.get("auto_sync", True)
 
 
 def get_scaling() -> str:
