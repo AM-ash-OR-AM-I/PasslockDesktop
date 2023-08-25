@@ -6,6 +6,9 @@
 
 Run `build_windows.bat` to make windows build, optionally you can set version number by passing it as argument.- 
 
+## Table of contents
+
+- [Table of contents](#table-of-contents)
 - [Features 🌟](#features-)
 - [Releases 🚀](#releases-)
   - [Additional steps for linux](#additional-steps-for-linux)
