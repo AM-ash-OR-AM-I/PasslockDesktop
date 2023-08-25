@@ -4,7 +4,7 @@
 
 ### Passlock (PC) - A powerful cross-platform password manager
 
-Run `build_windows.bat` to make windows build, optionally you can set version number by passing it as argument.- 
+Run `build_windows.bat` to make windows build, optionally you can set version number by passing it as argument.
 
 ## Table of contents
 
