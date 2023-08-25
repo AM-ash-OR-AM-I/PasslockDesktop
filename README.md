@@ -14,7 +14,7 @@
 
 ## Releases 🚀
 
-See all releases for Windows 🪟 and Linux 🐧 [here.](https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/)
+See all releases 📥 for Windows 🪟 and Linux 🐧 [here.](https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/)
 
 ### Additional steps for linux
 
@@ -65,7 +65,7 @@ Now app can be launched from applications menu
 In linux you may face issues with app not starting, it's likely if `xrandr` isn't installed.
 * Install `xrandr` by `$ sudo dnf xrandr` in fedora or `$ sudo apt xrandr` in ubuntu
 
-## Installation 📥
+## Setup 🛠️
 
 * Clone repo `git clone https://github.com/AM-ash-OR-AM-I/PasslockDesktop.git` & `cd PasslockDesktop`
 * Run the following command in terminal to install dependencies in a virtual environment.
