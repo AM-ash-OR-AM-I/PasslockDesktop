@@ -15,8 +15,8 @@
 - [Packaging 📦](#packaging-)
   - [Automated 🤖](#automated-)
   - [Manually 🧑🏻‍💻 (In case automated build fails)](#manually--in-case-automated-build-fails)
-    - [PyInstaller (Windows \& Linux)](#pyinstaller-windows--linux)
-      - [Advanced Installer (Windows only MSI Build)](#advanced-installer-windows-only-msi-build)
+    - [PyInstaller](#pyinstaller)
+    - [Advanced Installer (Windows only MSI Build)](#advanced-installer-windows-only-msi-build)
 - [Screenshots 💻](#screenshots-)
 - [Frameworks ⚙️](#frameworks-️)
 
@@ -79,6 +79,7 @@ Now app can be launched from applications menu
 ### Issues
 
 In linux you may face issues with app not starting, it's likely if `xrandr` isn't installed.
+
 - Install `xrandr` by `$ sudo dnf xrandr` in fedora or `$ sudo apt xrandr` in ubuntu
 
 ## Setup 🛠️
@@ -95,7 +96,7 @@ python -m pip install -r requirements.txt
 
 - Copy kivymd folder to site-packages
   - Windows: `xcopy kivymd\* env\Lib\site-packages\kivymd\ /E`
-  - Linux: `cp -r kivymd/ .</path/to/site-packages>/kivymd/`
+  - Linux/MacOS: `cp -r kivymd/ .</path/to/site-packages>/kivymd/`
 - Make a file named `libs\firebase_config.py` with the following content:
 
 ```py
@@ -118,17 +119,18 @@ os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in f
 
 ### Manually 🧑🏻‍💻 (In case automated build fails)
 
-#### PyInstaller (Windows & Linux)
+#### PyInstaller
 
 - Run `copy_kv_files.py` to copy kv files to `all_files` folder that will be used by PyInstaller.
   - NOTE: Do this every time you make changes to kv files.
-- Make sure environment is activated if not run `env\Scripts\activate` or `source env/bin/activate` for linux.
+- Make sure environment is activated if not run `env\Scripts\activate` or `source env/bin/activate` for linux/darwin.
 - Pyinstaller command to package app:
   - Windows `pyinstaller passlock_windows.spec --noconfirm`
   - Linux `pyinstaller passlock_linux.spec --noconfirm`
+  - MacOS `pyinstaller passlock_macos.spec --noconfirm`
 - Output will be in `dist/passlock` folder.
 
-##### Advanced Installer (Windows only MSI Build)
+#### Advanced Installer (Windows only MSI Build)
 
 - Download and install <a href="https://www.advancedinstaller.com/downloads.html">Advanced Installer</a>.
 - Check to see if path is correct for advanced installer in `make_msi_build.bat` file.
