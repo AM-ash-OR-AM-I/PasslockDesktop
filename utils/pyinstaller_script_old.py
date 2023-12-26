@@ -20,7 +20,6 @@ datas_list = [
     ("all_files/", "."),
     ("fonts/", "fonts/"),
     ("icons/pass.png", "."),
-    ("api_key.txt", "."),
 ]
 
 add_datas = "".join([f"--add-data {data[0]}{os.pathsep}{data[1]} " for data in datas_list])
@@ -33,7 +32,7 @@ Run this script to copy all .kv files in linux:
 find libs/ -name "*.kv" | cpio -pdm all_files/
 
 """
-os.system(f"pyinstaller --name Passlock_no_dep --icon icons/pass_256.ico {add_datas} main.py --noconfirm {append_string}")
+os.system(f"pyinstaller --name Passlock --icon icons/pass.png {add_datas} main.py --noconfirm {append_string} --windowed --onefile")
 # os.system(
 #     f"pyinstaller --name Passlock_no_dep --icon icons/pass_256.ico --add-data  main.py --noconfirm {append_string}"
 # )

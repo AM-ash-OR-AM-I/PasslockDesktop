@@ -3,6 +3,7 @@ import os.path
 import pickle
 import random
 import string
+from kivy.utils import platform
 
 if not os.path.exists(f"./data"):
     os.mkdir(f"./data")
@@ -111,4 +112,4 @@ def check_auto_sync() -> bool:
 
 def get_scaling() -> str:
     json_data = __get_config()
-    return str(json_data.get("ui_scaling", 1.5))
+    return str(json_data.get("ui_scaling", 1.5 if platform != "macosx" else 2))

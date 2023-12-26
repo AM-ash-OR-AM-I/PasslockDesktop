@@ -69,18 +69,30 @@ fonts = [
 for font in fonts:
     LabelBase.register(**font)
 dpi = Metrics.dpi
-if dpi < 80:
-    size_x, size_y = 770, 590
-    Window.minimum_height = size_x
-    Window.minimum_width = 500
-else:
-    size_x, size_y = 1100, 850
-    Window.minimum_height = size_y
-    Window.minimum_width = 700
-Window.left = (screenx - size_x) / 2
-Window.top = (screeny - size_y) / 2
-Window.size = (size_x, size_y)
 
+if platform=="macosx":
+    # Window.size = (size_x, size_y)
+    # Window.left = (screenx - size_x) / 2
+    # Window.top = (screeny - size_y) / 2
+    # Window.minimum_height = size_x
+    # Window.minimum_width = 500
+    # Window.fullscreen = False
+    # Window.maximize()
+    # Window.fullscreen = False
+    ...
+else:
+    if dpi < 80:
+        size_x, size_y = 770, 590
+        Window.minimum_height = size_x
+        Window.minimum_width = 500
+    else:
+        size_x, size_y = 1100, 850
+        Window.minimum_height = size_y
+        Window.minimum_width = 700
+    print(f"{dpi = }")
+    Window.left = (screenx - size_x) / 2
+    Window.top = (screeny - size_y) / 2
+    Window.size = (size_x, size_y)
 font_file = f"./fonts/Poppins-Regular.ttf"
 
 

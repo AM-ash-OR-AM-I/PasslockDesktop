@@ -23,3 +23,5 @@ Passlock-cache
 Passlock-SetupFiles
 Passlock.aip
 libs/firebase_config.py
+.venv
+release/
