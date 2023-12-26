@@ -31,7 +31,7 @@
 
 ## Releases 🚀
 
-[See all releases 📥 for Windows 🪟 and Linux 🐧 here.](https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/)
+[See all releases 📥 here.](https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/)
 
 ### Additional steps for linux
 
