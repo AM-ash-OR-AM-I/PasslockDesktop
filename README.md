@@ -122,43 +122,29 @@ os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in f
 
 ## Packaging 📦
 
+### Windows
+
 <details>
-<summary> Windows</summary>
-<details>
-<summary> Automated 🤖</summary>
+<summary> Automated </summary>
 
 - Run `.\build_windows.bat` to make windows build, optionally you can set version number by passing it as argument.
   - Example: `build_windows.bat 1.3.0`
   - This will first make .exe file using PyInstaller and then make MSI installer inside `Passlock-SetupFiles` folder.
-
+  
 </details>
 
 <details>
-<summary> Manually 🧑🏻‍💻 (In case automated build fails)</summary>
-
-</details>
-
-<details>
-<summary>Automated (Linux)</summary>
-
-<details>
-<summary>Manually 🧑🏻‍💻 (In case automated build fails)</summary>
-
-#### PyInstaller
+<summary> Manually </summary>
 
 - Run `copy_kv_files.py` to copy kv files to `all_files` folder that will be used by PyInstaller.
-  - NOTE: Do this every time you make changes to kv files.
-- Make sure environment is activated if not run `env\Scripts\activate` or `source env/bin/activate` for linux/darwin.
-- Pyinstaller command to package app:
-  - Windows `pyinstaller passlock_windows.spec --noconfirm`
-  - Linux `pyinstaller passlock_linux.spec --noconfirm`
-  - MacOS `pyinstaller passlock_macos.spec --noconfirm`
-- Output will be in `dist/passlock` folder.
+- NOTE: Do this every time you make changes to kv files.
+- Make sure environment is activated if not run `env\Scripts\activate`
+- Windows `pyinstaller passlock_windows.spec --noconfirm`
 
 </details>
 
 <details>
-<summary> Advanced Installer (Windows only MSI Build) </summary>
+<summary> Advanced Installer (MSI Build) </summary>
 
 - Download and install <a href="https://www.advancedinstaller.com/downloads.html">Advanced Installer</a>.
 - Check to see if path is correct for advanced installer in `make_msi_build.bat` file.
@@ -168,6 +154,56 @@ os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in f
   - NOTE: While installing you should not install in `Program Files` or `Program Files (x86)` folder as it will not have write permissions and app will not be able to create database file. Install in `C:\Passlock` or `D:\Passlock` or any other drive.
 
 </details>
+
+### Linux
+
+<details>
+<summary>Automated</summary>
+
+- Run `./build_linux.sh` to make linux build, optionally you can set version number by passing it as argument.
+  - Example: `./build_linux.sh 1.3.0`
+  - This will make a tar.gz file inside `dist` folder.
+  - Extract the tar.gz file and run `./install.sh` to install the app.
+
+</details>
+
+<details>
+<summary>Manually</summary>
+
+- Run `copy_kv_files.py` to copy kv files to `all_files` folder that will be used by PyInstaller.
+  - NOTE: Do this every time you make changes to kv files.
+  - Make sure environment is activated if not run `source env/bin/activate`
+  - Linux `pyinstaller passlock_linux.spec --noconfirm`
+
+</details>
+
+### MacOS
+
+<details>
+<summary> Automated </summary>
+
+- Run `./build_macos.sh` to make MacOS build, optionally you can set version number by passing it as argument.
+  - Example: `./build_macos.sh 1.3.0`
+  - This will make a `.dmg` file inside `dist` folder.
+  - Open the `.dmg` file and drag the app to Applications folder.
+  - Run the app from Applications folder.
+
+</details>
+
+<details>
+<summary> Manually </summary>
+
+- Run `copy_kv_files.py` to copy kv files to `all_files` folder that will be used by PyInstaller.
+  - NOTE: Do this every time you make changes to kv files.
+  - Make sure environment is activated if not run `source env/bin/activate`
+  - MacOS `pyinstaller passlock_macos.spec --noconfirm`
+  - Output will be in `dist/passlock` folder.
+  - Open the `.dmg` file and drag the app to Applications folder.
+
+</details>
+
+> [!NOTE]
+> You may face issues with MacOS build, please refer to the [Issues](#issues) section for solutions.
 
 ## Screenshots 💻
 
