@@ -122,7 +122,7 @@ os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in f
 
 ## Packaging 📦
 
-### Windows
+### Windows 🪟
 
 <details>
 <summary> Automated </summary>
@@ -155,7 +155,7 @@ os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in f
 
 </details>
 
-### Linux
+### Linux 🐧
 
 <details>
 <summary>Automated</summary>
@@ -177,7 +177,7 @@ os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in f
 
 </details>
 
-### MacOS
+### MacOS 🍎
 
 <details>
 <summary> Automated </summary>
@@ -203,9 +203,9 @@ os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in f
 </details>
 
 > [!NOTE]
-> You may face issues with MacOS build, please refer to the [Issues](#issues) section for solutions.
+> In case of any issues with packaging, please refer to the [Issues](#issues) section.
 
-## Screenshots 💻
+## Screenshots 📸
 
 | Welcome                              | Home                              |
 |--------------------------------------|-----------------------------------|
