@@ -15,7 +15,6 @@ Passlock is a password manager that helps you store and manage your passwords se
 > [!TIP]
 > You might face issues with various platforms, please refer to the [Issues](#issues) section for solutions.
 
-
 <details>
 <summary>Additional steps for linux</summary>
 
@@ -87,6 +86,13 @@ xattr -cr /path/to/Passlock.app
 
 </details>
 
+## Features 📝
+
+- Backup and auto-sync ☁️ passwords across devices 💻📱
+- Encrypted 🔐 passwords using AES 128bit for maximum security.
+- Mimics Material v3 Monet engine with 🌙 Dark Mode, to use different 🎨 color themes.
+- Make strong passwords 🔑 through built in password generator.
+- Advanced 🔍 finding algorithm to search for passwords easily.
 
 ## Setup 🛠️
 
@@ -117,18 +123,26 @@ os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in f
 ## Packaging 📦
 
 <details>
-<summary> Automated (Windows/Linux)</summary>
+<summary> Windows</summary>
+<details>
+<summary> Automated 🤖</summary>
 
 - Run `.\build_windows.bat` to make windows build, optionally you can set version number by passing it as argument.
   - Example: `build_windows.bat 1.3.0`
   - This will first make .exe file using PyInstaller and then make MSI installer inside `Passlock-SetupFiles` folder.
-- Run `./build_linux.bat` to make linux `.tar.gz` zip, optionally you can set version number by passing it as argument.
 
 </details>
 
 <details>
-<summary>Manually 🧑🏻‍💻 (In case automated build fails)</summary>
+<summary> Manually 🧑🏻‍💻 (In case automated build fails)</summary>
 
+</details>
+
+<details>
+<summary>Automated (Linux)</summary>
+
+<details>
+<summary>Manually 🧑🏻‍💻 (In case automated build fails)</summary>
 
 #### PyInstaller
 
@@ -154,7 +168,6 @@ os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in f
   - NOTE: While installing you should not install in `Program Files` or `Program Files (x86)` folder as it will not have write permissions and app will not be able to create database file. Install in `C:\Passlock` or `D:\Passlock` or any other drive.
 
 </details>
-
 
 ## Screenshots 💻
 
