@@ -12,6 +12,10 @@ Passlock is a password manager that helps you store and manage your passwords se
 
 [Download latest release 📥](https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/latest)
 
+> [!TIP]
+> You might face issues with various platforms, please refer to the [Issues](#issues) section for solutions.
+
+
 <details>
 <summary>Additional steps for linux</summary>
 
@@ -83,6 +87,7 @@ xattr -cr /path/to/Passlock.app
 
 </details>
 
+
 ## Setup 🛠️
 
 - Clone repo `git clone https://github.com/AM-ash-OR-AM-I/PasslockDesktop.git` & `cd PasslockDesktop`
@@ -111,14 +116,19 @@ os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in f
 
 ## Packaging 📦
 
-### Automated 🤖
+<details>
+<summary> Automated (Windows/Linux)</summary>
 
 - Run `.\build_windows.bat` to make windows build, optionally you can set version number by passing it as argument.
   - Example: `build_windows.bat 1.3.0`
   - This will first make .exe file using PyInstaller and then make MSI installer inside `Passlock-SetupFiles` folder.
 - Run `./build_linux.bat` to make linux `.tar.gz` zip, optionally you can set version number by passing it as argument.
 
-### Manually 🧑🏻‍💻 (In case automated build fails)
+</details>
+
+<details>
+<summary>Manually 🧑🏻‍💻 (In case automated build fails)</summary>
+
 
 #### PyInstaller
 
@@ -131,7 +141,10 @@ os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in f
   - MacOS `pyinstaller passlock_macos.spec --noconfirm`
 - Output will be in `dist/passlock` folder.
 
-#### Advanced Installer (Windows only MSI Build)
+</details>
+
+<details>
+<summary> Advanced Installer (Windows only MSI Build) </summary>
 
 - Download and install <a href="https://www.advancedinstaller.com/downloads.html">Advanced Installer</a>.
 - Check to see if path is correct for advanced installer in `make_msi_build.bat` file.
@@ -139,6 +152,9 @@ os.environ["DATABASE_URL"] = "[YOUR DATABASE URL HERE]" # Find database url in f
 - Output will be in `Passlock-SetupFiles` folder.
 - Run `Passlock-SetupFiles\Passlock.msi` to install and run app.
   - NOTE: While installing you should not install in `Program Files` or `Program Files (x86)` folder as it will not have write permissions and app will not be able to create database file. Install in `C:\Passlock` or `D:\Passlock` or any other drive.
+
+</details>
+
 
 ## Screenshots 💻
 
