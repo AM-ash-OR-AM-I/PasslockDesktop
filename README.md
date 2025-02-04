@@ -2,38 +2,18 @@
     <img src = "icons/pass.png" height = 150>
 </p>
 
+# Passlock Desktop 🗝️
 
-## Table of contents
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/AM-ash-OR-AM-I/PasslockDesktop)]
 
-- [Table of contents](#table-of-contents)
-- [Features 🌟](#features-)
-- [Releases 🚀](#releases-)
-  - [Additional steps for linux](#additional-steps-for-linux)
-    - [Manually (In case script doesn't work)](#manually-in-case-script-doesnt-work)
-  - [Issues](#issues)
-- [Setup 🛠️](#setup-️)
-- [Packaging 📦](#packaging-)
-  - [Automated 🤖](#automated-)
-  - [Manually 🧑🏻‍💻 (In case automated build fails)](#manually--in-case-automated-build-fails)
-    - [PyInstaller](#pyinstaller)
-    - [Advanced Installer (Windows only MSI Build)](#advanced-installer-windows-only-msi-build)
-- [Screenshots 💻](#screenshots-)
-- [Frameworks ⚙️](#frameworks-️)
+Passlock is a password manager that helps you store and manage your passwords securely. It uses AES encryption to store passwords in a local database file. It also has a feature to backup and sync your passwords to Firebase Realtime Database. It is a desktop version of the android app <a href="https://github.com/AM-ash-OR-AM-I/Passlock">Passlock</a>.
 
+## Download 📥
 
-## Features 🌟
+[Download latest release 📥](https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/latest)
 
-- Backup and auto-sync ☁️ passwords across devices 💻📱
-- Encrypted 🔐 passwords using AES 128bit for maximum security.
-- Mimics Material v3 Monet engine with 🌙 Dark Mode, to use different 🎨 color themes.
-- Make strong passwords 🔑 through built in password generator.
-- Advanced 🔍 finding algorithm to search for passwords easily.
-
-## Releases 🚀
-
-[See all releases 📥 here.](https://github.com/AM-ash-OR-AM-I/PasslockDesktop/releases/)
-
-### Additional steps for linux
+<details>
+<summary>Additional steps for linux</summary>
 
 - Extract files to dir using `tar -xzvf passlock.tar.gz -C <output_path>`
 - `cd passlock` & Just run `./install.sh` inside the passlock folder
@@ -75,12 +55,33 @@ Icon=/path/to/passlock/pass.png
 
 Now app can be launched from applications menu
 </details>
+</details>
 
 ### Issues
+
+<details>
+<summary>Linux</summary>
 
 In linux you may face issues with app not starting, it's likely if `xrandr` isn't installed.
 
 - Install `xrandr` by `$ sudo dnf xrandr` in fedora or `$ sudo apt xrandr` in ubuntu
+
+</details>
+
+<details>
+<summary>MacOS</summary>
+
+- In MacOS after installing app you may face issues with app not starting, it's likely due to quarantine attribute set by MacOS.
+
+- Remove quarantine attribute by running the following command in terminal:
+
+```bash
+xattr -cr /path/to/Passlock.app
+```
+
+- Now you can run the app by double clicking on the app icon or optionally add it to dock.
+
+</details>
 
 ## Setup 🛠️
 
