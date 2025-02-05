@@ -6,7 +6,7 @@
 
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/AM-ash-OR-AM-I/PasslockDesktop)]
 
-Passlock is a password manager that helps you store and manage your passwords securely. It uses AES encryption to store passwords in a local database file. It also has a feature to backup and sync your passwords to Firebase Realtime Database. It is a desktop version of the android app <a href="https://github.com/AM-ash-OR-AM-I/Passlock">Passlock</a>.
+PassLock is a password manager that helps you securely store and manage your passwords. It uses AES encryption to protect your data in a local database file. With a zero-knowledge encryption model, your master password is never saved anywhere, ensuring only you can decrypt your data. It also offers a backup and sync feature using Firebase Realtime Database. It is a desktop version of the android app <a href="https://github.com/AM-ash-OR-AM-I/Passlock">Passlock</a>.
 
 ## Download 📥
 
@@ -90,6 +90,7 @@ xattr -cr /path/to/Passlock.app
 
 - Backup and auto-sync ☁️ passwords across devices 💻📱
 - Encrypted 🔐 passwords using AES 128bit for maximum security.
+- Zero-knowledge encryption 🔒 ensures your master password is never stored or transmitted.
 - Mimics Material v3 Monet engine with 🌙 Dark Mode, to use different 🎨 color themes.
 - Make strong passwords 🔑 through built in password generator.
 - Advanced 🔍 finding algorithm to search for passwords easily.
